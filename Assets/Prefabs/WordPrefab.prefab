@@ -216,7 +216,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Word: 
-  _fallSpeed: 0.5
   _textMesh: {fileID: 553762290271139059}
   _spriteRenderer: {fileID: 5134320649527067010}
+  baseSpeed: 1
   padding: {x: 0.4, y: 0.4}
