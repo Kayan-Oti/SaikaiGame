@@ -17,7 +17,10 @@ public class SpawnerWords : Singleton<SpawnerWords>
     [SerializeField] private float _spawnInterval = 1f; // Intervalo de spawn em segundos
     private float spawnTimer;
 
+    private List<string> wordList;
+
     private void Start() {
+        LoadWords();
         SpawnWord();
     }
 
@@ -30,6 +33,20 @@ public class SpawnerWords : Singleton<SpawnerWords>
             SpawnWord();
             spawnTimer = 0f;
         }
+    }
+
+    void LoadWords()
+    {
+        TextAsset wordFile = Resources.Load<TextAsset>("words");
+        if (wordFile != null)
+        {
+            wordList = new List<string>(wordFile.text.Split('\n'));
+            for (int i = 0; i < wordList.Count; i++)
+                wordList[i] = wordList[i].Trim(); // Remove espaços ou quebras desnecessárias
+        }
+        else
+            Debug.LogError("Arquivo words.txt não encontrado!");
+        
     }
 
     private void SpawnWord()
@@ -58,8 +75,6 @@ public class SpawnerWords : Singleton<SpawnerWords>
 
     private string GetRandomWord()
     {
-        // Retorna uma palavra aleatória de exemplo
-        string[] words = { "Unity", "Game", "Code", "Spawner", "Player"};
-        return words[Random.Range(0, words.Length)];
+        return wordList[Random.Range(0, wordList.Count)];
     }
 }

@@ -1,0 +1,285 @@
+Sect
+Cultivador
+Dao
+Arte Marcial
+Reencarnação
+Qi
+Espada
+Dragão
+Monte Celestial
+Pílula
+Imortal
+Demônio
+Técnica
+Ancestral
+Discípulo
+Pacto
+Chamas
+Talismã
+Formação
+Montanha
+Lótus
+Fênix
+Chakra
+Sábio
+Escritura
+Herança
+Tigre Branco
+Clã
+Destino
+Venerável
+Pacto
+Proteção
+Renascimento
+Caminho Celestial
+Meditador
+Serenidade
+Alma
+Harmonia
+Iluminação
+Karma
+Zen
+Yin
+Yang
+Equilíbrio
+Tranquilidade
+Bambu
+Montanha
+Refúgio
+Espectro
+Incenso
+Chama Azul
+Aura
+Caverna
+Sabedoria
+Mentor
+Eremita
+Mandala
+Chapéu de Palha
+Cortina de Seda
+Paz Interior
+Chá Verde
+Caminho do Meio
+Arte Secreta
+Habilidade
+Concentração
+Refinamento
+Aprimoramento
+Estágio
+Mestre
+Subjugação
+Ascensão
+Proteção
+Formação
+Guardião
+Barreira
+Fagulha
+Evolução
+Ciclo
+Transformação
+Clã
+Arena
+Rival
+Desafio
+Confronto
+Disciplina
+Guerreiro
+Prática
+Determinante
+Elo
+Despertar
+Força Vital
+Matriz
+Movimento
+Golpe
+Percepção
+Impacto
+Fúria
+Energização
+Fundação
+Reino
+Circulação
+Fluxo
+Canal
+Meridiano
+Acumulação
+Convergência
+Exaustão
+Rejuvenescimento
+Vigor
+Respiração
+Reservatório
+Essência
+Energia Espiritual
+Energia Demoníaca
+Energia Elemental
+Espírito de Batalha
+Energia Sagrada
+Estabilidade
+Aura
+Dança do Qi
+Contenção
+Controle
+Desbalanceamento
+Dilatação
+Reino Mortal
+Reino Marcial
+Reino Espiritual
+Reino Celestial
+Reino Divino
+Reino Demoníaco
+Reino Imortal
+Reino Infernal
+Reino de Ascensão
+Reino de Transcendência
+Reino do Vazio
+Reino da Verdade
+Reino do Caos
+Reino Supremo
+Reino de Despertar
+Reino da Origem
+Reino do Dao
+Reino da Eternidade
+Reino do Julgamento
+Reino Estelar
+Reino dos Dragões
+Reino da Fênix
+Estágio Básico
+Estágio Intermediário
+Estágio Avançado
+Pico do Estágio
+Técnica Secreta
+Técnica Proibida
+Técnica Suprema
+Arte de Espada
+Arte de Lança
+Arte de Punho
+Arte do Dragão
+Técnica de Ilusão
+Técnica Elemental
+Espada Longa
+Espada Curta
+Espada Divina
+Lança Sagrada
+Armadura Espiritual
+Artefato Antigo
+Artefato Divino
+Pílula Medicinal
+Pílula de Rejuvenescimento
+Pílula de Crescimento
+Pílula Espiritual
+Anel de Armazenamento
+Pingente
+Cristal de Energia
+Tesouro Secreto
+Lótus Sagrado
+Herança Divina
+Manuscrito Antigo
+Escritura Proibida
+Grimório
+Amuleto
+Runas
+Cajado
+Montanha Sagrada
+Vale Escondido
+Terra Proibida
+Palácio Celestial
+Templo Antigo
+Floresta dos Espíritos
+Abismo Demoníaco
+Ruínas Antigas
+Pico Solitário
+Lago Místico
+Caverna Oculta
+Deserto Sem Fim
+Pântano dos Mil Venenos
+Planície Sagrada
+Campo de Batalha
+Cidade Celestial
+Fortaleza Divina
+Muralha Espiritual
+Praça do Clã
+Sede do Clã
+Biblioteca Antiga
+Refúgio dos Imortais
+Vila Abandonada
+Portão Celestial
+Mestre Ancião
+Patriarca
+Ancestral
+Jovem Mestre
+Discípulo Júnior
+Discípulo Sênior
+Junior Irmão
+Sênior Irmã
+Antagonista
+Protagonista
+Herdeiro
+Venerável
+Anjo
+Demônio
+Deus da Guerra
+Tigre Oculto
+Dragão Adormecido
+Sábio
+Eremita
+Líder do Clã
+Monge
+Espadachim
+Ladrão
+Tirano
+Mestre Ancião
+Patriarca
+Ancestral
+Jovem Mestre
+Discípulo Júnior
+Discípulo Sênior
+Junior Irmão
+Sênior Irmã
+Antagonista
+Protagonista
+Herdeiro
+Venerável
+Anjo
+Demônio
+Deus da Guerra
+Tigre Oculto
+Dragão Adormecido
+Sábio
+Eremita
+Líder do Clã
+Monge
+Espadachim
+Ladrão
+Tirano
+Rei
+Imperador
+Rainha
+Princesa
+General
+Guarda Imperial
+Cultivador Errante
+Guardião dos Céus
+Destino
+Causa e Efeito
+Lei Celestial
+Provação
+Ciclo de Reencarnação
+Ordem Natural
+Proteção Divina
+Alma Gêmea
+Voto de Sangue
+Ressurreição
+Sacrifício
+Renascimento
+Decreto Celestial
+Contrato Espiritual
+Vontade do Céu
+Domínio
+Camada Dimensional
+Portão Espiritual
+Gema do Destino
+Energia Primordial
+Raiz Espiritual
+Linha de Sangue
+Corpo Divino

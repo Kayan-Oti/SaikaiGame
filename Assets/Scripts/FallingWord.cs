@@ -11,9 +11,15 @@ public class FallingWord : MonoBehaviour
 
     [SerializeField] private float baseSpeed = 1f; // Velocidade base
     private float speedMultiplier = 1f; // Multiplicador de velocidade
+    private float _spawnTime; // Tempo em que a palavra aparece na tela
 
     [Header("Ajuste de texto")]
     public Vector2 padding = new Vector2(0.5f, 0.5f); // Espaço extra ao redor do texto
+
+    private void OnEnable()
+    {
+        _spawnTime = Time.time; // Armazena o tempo de spawn da palavra
+    }
 
     private void Update()
     {
@@ -57,5 +63,23 @@ public class FallingWord : MonoBehaviour
     public void SetSpeedMultiplier(float multiplier)
     {
         speedMultiplier = multiplier;
+    }
+
+    public void SetColor(string typedWord){
+        // Dividir a palavra em duas partes: digitada corretamente e restante.
+        int correctLength = Mathf.Min(typedWord.Length, Word.Length);
+        string correctPart = Word.Substring(0, correctLength); // Parte correta
+        string remainingPart = Word.Substring(correctLength); // Parte restante
+
+        // Montar o texto formatado com cores.
+        string formattedText = $"<color=yellow>{correctPart}</color>{remainingPart}";
+        _textMesh.text = formattedText;
+
+        _spriteRenderer.color = Color.gray;
+    }
+
+    public void ResetColor(){
+        _textMesh.text = Word;
+        _spriteRenderer.color = Color.black;
     }
 }
