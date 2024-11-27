@@ -66,13 +66,37 @@ public class FallingWord : MonoBehaviour
     }
 
     public void SetColor(string typedWord){
-        // Dividir a palavra em duas partes: digitada corretamente e restante.
-        int correctLength = Mathf.Min(typedWord.Length, Word.Length);
-        string correctPart = Word.Substring(0, correctLength); // Parte correta
-        string remainingPart = Word.Substring(correctLength); // Parte restante
+        // Inicializa partes formatadas
+        string correctPart = "";
+        string incorrectPart = "";
+        string remainingPart = "";
 
-        // Montar o texto formatado com cores.
-        string formattedText = $"<color=yellow>{correctPart}</color>{remainingPart}";
+        bool isIncorret = false;
+        for (int i = 0; i < typedWord.Length; i++)
+        {
+            if (i >= Word.Length)
+                break;
+            
+            //Se já foi incorreto anteriormente, pula direto pro else
+            if (!isIncorret && char.ToUpper(typedWord[i]) == char.ToUpper(Word[i])){
+                correctPart += $"<color=yellow>{Word[i]}</color>";
+            }
+            else{
+                if (Word[i] == ' ') // Espaço em branco correto
+                    incorrectPart += $"<color=red>_</color>";
+                else
+                    incorrectPart += $"<color=red>{Word[i]}</color>";
+                isIncorret = true;
+            }
+        }
+
+        // Parte restante da palavra que ainda não foi digitada
+        if (typedWord.Length < Word.Length)
+            remainingPart = Word.Substring(typedWord.Length);
+        
+
+        // Monta o texto formatado
+        string formattedText = correctPart + incorrectPart + remainingPart;
         _textMesh.text = formattedText;
 
         _spriteRenderer.color = Color.gray;
