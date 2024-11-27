@@ -979,6 +979,42 @@ MonoBehaviour:
   _inputText: {fileID: 1022082344}
   _scoreText: {fileID: 2090237800}
   _comboText: {fileID: 2001646341}
+  SCORE_GAIN: 100
+  SCORE_LOST: 500
+  COMBO_PENALTY: 3
+  SPEED_MULTIPLIER_DEFAULT: 0.25
+  SPEED_MULTIPLIER_INCREMENT: 0.01
+  SPAWN_INTERVAL_DEFAULT: 3.5
+  SPAWN_INTERVAL_MIN: 1.85
+  SPAWN_INTERVAL_MAX: 10
+  SPAWN_INTERVAL_INCREASE: 0.65
+  SPAWN_EXPONENCIAL_CURVE:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.5
+      outSlope: 2.5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.09214556
+      outSlope: 0.09214556
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17916667
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  REACTION_TIME_MIN: 1.75
+  REACTION_TIME_MAX: 10
+  REACTION_TIME_ADJUST_HIT: 3
 --- !u!4 &1098529548
 Transform:
   m_ObjectHideFlags: 0
