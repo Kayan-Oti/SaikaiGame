@@ -15,12 +15,15 @@ public class UI_SliderVolume : MonoBehaviour
 
     [Header("Type")]
     [SerializeField] private VolumeType _volumeType = VolumeType.Master;
+    [SerializeField] private Color _selectedColor;
+    private Color _defaultColor;
     private Slider _volumeSlider;
     private Image _background;
 
     private void Start(){
         _volumeSlider = GetComponentInChildren<Slider>();
         _background = GetComponent<Image>();
+        _defaultColor = _background.color;
         UpdateSliders();
     }
 
@@ -61,11 +64,11 @@ public class UI_SliderVolume : MonoBehaviour
 
     public void OnSelect()
     {
-        _background.color = new Color(100f/255f, 80f/255f, 80f/255f);
+        _background.color = _selectedColor;
     }
 
     public void OnDeselect()
     {
-        _background.color = new Color(30f/255f, 30f/255f, 30f/255f);
+        _background.color = _defaultColor;
     }
 }

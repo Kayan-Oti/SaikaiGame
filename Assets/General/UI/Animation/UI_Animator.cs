@@ -31,11 +31,11 @@ public class UI_Animator : UI_Abstract_Animator
             switch(_animationStruct.StylePosition){
                 case AnimationStyle.Appearing:
                     _targetPosition = _defaultPos;
-                    _rectTransform.localPosition = (Vector3)(_defaultPos + _animationStruct.Distance);
+                    _rectTransform.anchoredPosition = (Vector3)(_defaultPos + _animationStruct.Distance);
                 break;
                 case AnimationStyle.Leaving:
                     _targetPosition = _defaultPos + _animationStruct.Distance;
-                    _rectTransform.localPosition = (Vector3)_defaultPos;
+                    _rectTransform.anchoredPosition = (Vector3)_defaultPos;
                 break;
             }
         }else{

@@ -42,17 +42,11 @@ public class Manager_Menu : MonoBehaviour
         AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MenuMusic, MusicIntensity.Intensity3);
     }
 
-    private void LeavingMenu(){
-        //Stop Song
-        AudioManager.Instance.StopMusic();
-    }
-
     #endregion
 
     #region Onclick
 
     public void OnClick_Play(){
-        LeavingMenu();
         GameManager.Instance.LoadScene(_playScene);
     }
 

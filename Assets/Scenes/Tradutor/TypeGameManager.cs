@@ -11,8 +11,12 @@ public class TypeGameManager : Singleton<TypeGameManager>
     [Header("Debug ReadOnly")]
     [SerializeField] [ReadOnly] private List<FallingWord> activeWordObjects = new List<FallingWord>(); // Palavras na tela
     [SerializeField] [ReadOnly] private List<FallingWord> possibleWords = new List<FallingWord>(); // Lista de possíveis
-    [SerializeField] [ReadOnly] private int score = 0;
     [SerializeField] [ReadOnly] private string typedWord;
+    //Statistics
+    [SerializeField] [ReadOnly] public int Score = 0;
+    [SerializeField] [ReadOnly] public float MaxCombo = 1f;
+    [SerializeField] [ReadOnly] public int Hits = 0;
+    [SerializeField] [ReadOnly] public int TypeMiss = 0;
 
     [Header("GameObjects")]
     [SerializeField] private SpawnerWords _spawner;
@@ -69,11 +73,6 @@ public class TypeGameManager : Singleton<TypeGameManager>
     private bool _isTypeWrong = false;
     private bool _isActive = false;
 
-    //Statistics
-    private float _maxCombo = 1f;
-    private int _hits = 0;
-    private int _typeMiss = 0;
-
     private void OnEnable()
     {
         EventManager.LevelManager.OnLevelStart.Get().AddListener(StartLevel);
@@ -114,10 +113,11 @@ public class TypeGameManager : Singleton<TypeGameManager>
 
     #region Set Up
     public void StartLevel(){
-        _isActive = true;
         ResetLevel();
         _spawner.StartSpawn();
         _timer.StartTimer();
+        
+        _isActive = true;
     }
 
     public void ResetLevel(){
@@ -136,9 +136,10 @@ public class TypeGameManager : Singleton<TypeGameManager>
         _hasActiveWords = false;
         _isTypeWrong = false;
 
-        _maxCombo = 1f;
-        _hits = 0;
-        _typeMiss = 0;
+        Score = 0;
+        MaxCombo = 1f;
+        Hits = 0;
+        TypeMiss = 0;
 
         //---Visual
         _inputText.text = "";
@@ -246,7 +247,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
         SubtractCombo();
 
         //Statistic
-        _typeMiss++;
+        TypeMiss++;
     }
 
     private void OnWordMiss(){
@@ -277,7 +278,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
         ResetTypedWord();
 
         //Statistic
-        _hits++;
+        Hits++;
     }
 
     private void ResetTypedWord()
@@ -331,12 +332,12 @@ public class TypeGameManager : Singleton<TypeGameManager>
     #region Combo & Score
 
     private void AddScore(int numberOfCharacter){
-        score += Mathf.RoundToInt(numberOfCharacter * SCORE_GAIN * _comboMultiplier);
+        Score += Mathf.RoundToInt(numberOfCharacter * SCORE_GAIN * _comboMultiplier);
         UpdateVisualScorePoint();
     }
 
     private void SubtractScore(){
-        score -= SCORE_LOST;
+        Score -= SCORE_LOST;
         UpdateVisualScorePoint();
     }
 
@@ -344,8 +345,8 @@ public class TypeGameManager : Singleton<TypeGameManager>
         _comboCount++;
         _comboMultiplier = 1f + (_comboCount * 0.1f);
 
-        if(_comboMultiplier > _maxCombo)
-            _maxCombo = _comboMultiplier;
+        if(_comboMultiplier > MaxCombo)
+            MaxCombo = _comboMultiplier;
 
         UpdateVisualCombo();
     }
@@ -445,7 +446,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
     }
 
     private void UpdateVisualScorePoint(){
-        _scoreText.text = score.ToString();
+        _scoreText.text = Score.ToString();
     }
 
     private void UpdateVisualCombo()

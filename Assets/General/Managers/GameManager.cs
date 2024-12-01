@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     #endregion
 
     public void LoadScene(SceneIndex scene){
+        AudioManager.Instance.StopMusic();
         StartCoroutine(GetSceneLoadProgress(scene));
     }
 

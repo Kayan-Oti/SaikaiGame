@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using MyBox;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
@@ -10,6 +11,12 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     [SerializeField] private TypeGameManager _typeGameManager;
     [SerializeField] private DialogueManager _dialogueManager;
     [SerializeField] private UI_ManagerAnimation _managerAnimation;
+
+    [Header("UI Text")]
+    [SerializeField] private TextMeshProUGUI _textScore;
+    [SerializeField] private TextMeshProUGUI _textMaxCombo;
+    [SerializeField] private TextMeshProUGUI _textHits;
+    [SerializeField] private TextMeshProUGUI _textTypeMiss;
 
     [Header("Dialogue")]
     [SerializeField] private SO_Dialogue _dialogueStart;
@@ -77,27 +84,28 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     #region UI Events
 
     private void SetGameOverUI(bool state){
-        if(state)
+        if(state){
             _managerAnimation.PlayAnimation("GameOver_Start");
-        else
+            _textScore.text = _typeGameManager.Score.ToString();
+            _textMaxCombo.text = _typeGameManager.MaxCombo.ToString("F1");
+            _textHits.text = _typeGameManager.Hits.ToString();
+            _textTypeMiss.text = _typeGameManager.TypeMiss.ToString();
+        }
+        else{
             _managerAnimation.PlayAnimation("GameOver_End", StartLevel);
+        }
     }
 
     public void PlayAgain(){
         SetGameOverUI(false);
-    }
-
-    private void LeavingLevel(){
-        AudioManager.Instance.StopMusic();
+        StartLevel();
     }
 
     public void BackToMenu(){
-        LeavingLevel();
         GameManager.Instance.LoadScene(SceneIndex.Menu);
     }
 
     public void NextLevel(){
-        LeavingLevel();
         SceneIndex sceneIndex = _nextLevelIndex;
         GameManager.Instance.LoadScene(sceneIndex);
     }
