@@ -132,8 +132,13 @@ public class UI_ManagerAnimation : MonoBehaviour
         bool works;
         switch(CheckAnimationState(nameFilter)){
             case AnimationState.notExist:
-                _animationActivity.Add(nameFilter, true);
-                works = true;
+                if(!_listAnimations.Exists(x => x.name == nameFilter)){
+                    Debug.Log("NameFilter Invalid");
+                    works = false;
+                }else{
+                    _animationActivity.Add(nameFilter, true);
+                    works = true;
+                }
                 break;
             case AnimationState.isActive:
                 Debug.LogError($"Animation {nameFilter} is already Active");
