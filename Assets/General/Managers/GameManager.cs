@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private LoadingScreen _loadingScreen;
+    [SerializeField] private CanvasGroup _blockRaycast;
     [SerializeField] private bool _loadSceneOnStart = true;
     private List<AsyncOperation> _scenesLoading = new List<AsyncOperation>();
     private int _currentSceneIndex;
@@ -35,6 +36,7 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadScene(SceneIndex scene){
         AudioManager.Instance.StopMusic();
+        _blockRaycast.blocksRaycasts = true;
         StartCoroutine(GetSceneLoadProgress(scene));
     }
 
@@ -65,6 +67,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void OnSceneLoaded(){
+        _blockRaycast.blocksRaycasts = false;
         Time.timeScale = 1.0f;
         //Animação ao terminar de Carrega
         _loadingScreen.OnEndLoadScene(InvokeOnLoadedScene);

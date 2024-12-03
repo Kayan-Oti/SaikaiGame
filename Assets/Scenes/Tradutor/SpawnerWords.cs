@@ -69,7 +69,7 @@ public class SpawnerWords : MonoBehaviour
         Vector3 spawnPosition = new Vector3(randomX, _spawnPoint.position.y, _spawnPoint.position.z);
 
         // Instancia o prefab na posição calculada
-        GameObject newWordObject = Instantiate(_wordPrefab, spawnPosition, Quaternion.identity);
+        GameObject newWordObject = Instantiate(_wordPrefab, spawnPosition, Quaternion.identity, transform);
 
         // Configura o texto dinamicamente
         FallingWord wordObject = newWordObject.GetComponent<FallingWord>();

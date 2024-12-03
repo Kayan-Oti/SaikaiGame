@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6028110272539097519}
   - component: {fileID: 4127543832766465849}
+  - component: {fileID: 8488001437841185318}
+  - component: {fileID: 7250550239246050745}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -29,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 69501897241901875}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4127543832766465849
@@ -49,57 +50,32 @@ MonoBehaviour:
   musicVolume: 0.75
   ambienceVolume: 0.75
   sfxVolume: 0.75
---- !u!1 &6372068769567503978
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 69501897241901875}
-  - component: {fileID: 5836848298042349558}
-  m_Layer: 0
-  m_Name: FMODEvents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &69501897241901875
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372068769567503978}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6028110272539097519}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5836848298042349558
+--- !u!114 &8488001437841185318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372068769567503978}
+  m_GameObject: {fileID: 2142643119753548103}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c9d6b7ec4ae7c2468f1f379995f55f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MenuMusic>k__BackingField:
+  <MusicMenu>k__BackingField:
     Guid:
       Data1: -1877412216
       Data2: 1106626742
       Data3: 280281499
       Data4: 1323884787
     Path: event:/Music/MenuMusic
+  <MusicTradutor>k__BackingField:
+    Guid:
+      Data1: -79537515
+      Data2: 1238150812
+      Data3: -1947066696
+      Data4: 334338477
+    Path: event:/Music/TradutorMusic
   <ButtonHover>k__BackingField:
     Guid:
       Data1: -481775103
@@ -135,3 +111,20 @@ MonoBehaviour:
       Data3: 1078187145
       Data4: -1916592871
     Path: event:/SFX/UI/LoadScreenEnd
+--- !u!114 &7250550239246050745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142643119753548103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527b3b99228ac57489bbaeb1e0e87fc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Banks:
+  - Master
+  - Music
+  - SFX
+  - Ambience

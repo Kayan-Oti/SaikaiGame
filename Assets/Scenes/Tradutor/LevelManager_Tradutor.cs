@@ -24,6 +24,7 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 
     [Header("Values")]
     [SerializeField] private SceneIndex _nextLevelIndex;
+    [SerializeField] private bool _isStoryLevel = false;
     private const float DELAY_TO_START = 0.25f;
 
     #region Unity Setup
@@ -35,7 +36,6 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     private void OnDisable(){
         EventManager.GameManager.OnLoadedScene.Get().RemoveListener(OnLoadedScene);
         EventManager.LevelManager.OnLevelEnd.Get().RemoveListener(OnEndLevel);
-
     }
 
     #endregion
@@ -43,26 +43,22 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     #region Dialogue Events
     private void OnLoadedScene() {
         //Play Song
-        AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MenuMusic);
-        Invoke(nameof(StartDialogue), DELAY_TO_START);
+        AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicTradutor);
+        
+        if(_isStoryLevel)
+            Invoke(nameof(StartDialogue), DELAY_TO_START);
+        else
+            Invoke(nameof(StartLevel), DELAY_TO_START);
     }
 
     [ButtonMethod]
     private void StartDialogue(){
-        _dialogueManager.StartDialogue(_dialogueStart, OnEndDialogueStart);
+        _dialogueManager.StartDialogue(_dialogueStart, StartLevel);
     }
 
     [ButtonMethod]
     private void EndLevelDialogue(){
-        _dialogueManager.StartDialogue(_dialogueEnd, OnEndDialogueEnd);
-    }
-
-    private void OnEndDialogueStart(){
-        StartLevel();
-    }
-
-    private void OnEndDialogueEnd(){
-        SetGameOverUI(true);
+        _dialogueManager.StartDialogue(_dialogueEnd, () => SetGameOverUI(true));
     }
 
     #endregion
@@ -76,7 +72,14 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 
     [ButtonMethod]
     private void OnEndLevel(){
-        EndLevelDialogue();
+        if(_isStoryLevel)
+            Invoke(nameof(EndLevelDialogue), DELAY_TO_START);
+        else
+            Invoke(nameof(WaitToCallGameOver), DELAY_TO_START);
+    }
+
+    private void WaitToCallGameOver(){
+        SetGameOverUI(true);
     }
 
     #endregion

@@ -201,6 +201,11 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!225 &1362319400 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2823904838251884628, guid: c60f1a1e7db084e44952908df1b41606, type: 3}
+  m_PrefabInstance: {fileID: 6461166970845677169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1902446281
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +357,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1203333345957094128, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203333345957094128, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203333345957094128, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203333345957094128, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4354983428166558194, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -396,6 +417,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8830165163203306592, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830165163203306592, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830165163203306592, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830165163203306592, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979501194832889180, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -424,6 +465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2906886749420886673, guid: 4266a83158a567544b8f0fe698ba42c5, type: 3}
+      propertyPath: _blockRaycast
+      value: 
+      objectReference: {fileID: 1362319400}
     - target: {fileID: 2906886749420886673, guid: 4266a83158a567544b8f0fe698ba42c5, type: 3}
       propertyPath: _loadingScreen
       value: 
@@ -595,10 +640,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1298847056675708531, guid: c60f1a1e7db084e44952908df1b41606, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6255189679329684665, guid: c60f1a1e7db084e44952908df1b41606, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
