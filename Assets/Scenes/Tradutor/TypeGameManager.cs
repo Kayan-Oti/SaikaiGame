@@ -27,6 +27,9 @@ public class TypeGameManager : Singleton<TypeGameManager>
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _comboText;
 
+    [Header("Timer")]
+    [SerializeField] private float _startTime;
+
     [Header("Combo + Score")]
     [Tooltip("Score ganho por letra")]
     [SerializeField] private int SCORE_GAIN = 25;
@@ -115,7 +118,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
     public void StartLevel(){
         ResetLevel();
         _spawner.StartSpawn();
-        _timer.StartTimer();
+        _timer.StartTimer(_startTime);
         
         _isActive = true;
     }
@@ -152,6 +155,11 @@ public class TypeGameManager : Singleton<TypeGameManager>
         _spawner.EndSpawn();
         ClearActiveWords();
         EventManager.LevelManager.OnLevelEnd.Get().Invoke();
+    }
+
+    [ButtonMethod]
+    public void EndTimer(){
+        _timer.EndTimer();
     }
 
     #endregion

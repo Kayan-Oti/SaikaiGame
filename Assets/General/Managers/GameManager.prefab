@@ -46,3 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadingScreen: {fileID: 0}
   _loadSceneOnStart: 1
+  Banks:
+  - Master
+  - Music
+  - SFX
+  - Ambience

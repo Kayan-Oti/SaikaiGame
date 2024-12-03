@@ -8,7 +8,6 @@ using UnityEngine;
 public class CountDownTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
-    [SerializeField] private float _startTime;
     private bool _isActive = false;
     private float _remainingTime;
     private float _timePassed;
@@ -36,13 +35,13 @@ public class CountDownTimer : MonoBehaviour
         UpdateVisualTimer();
     }
 
-    public void StartTimer(){
-        _remainingTime = _startTime;
+    public void StartTimer(float startTime){
+        _remainingTime = startTime;
         _timePassed = 0f;
         _isActive = true;
     }
 
-    private void EndTimer(){
+    public void EndTimer(){
         _remainingTime = 0;
         _isActive = false;
         TriggerEnd();
@@ -59,12 +58,10 @@ public class CountDownTimer : MonoBehaviour
     #region EventTrigger
 
     private void TriggerEnd(){
-        Debug.Log("TriggerEnd");
         EventManager.LevelManager.OnCountDownEnd.Get().Invoke();
     }
 
     private void TriggerCycle(){
-        Debug.Log("TriggerCycle");
         EventManager.LevelManager.OnCountDownCycle.Get().Invoke();
     }
 

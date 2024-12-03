@@ -25,16 +25,52 @@ public class AudioManager : Singleton<AudioManager>
     private EventInstance _ambienceEventInstance;
     private EventInstance _musicEventInstance;
 
+    private bool _areBusesValid = false;
+
     #region Setup
     private void Awake(){
         _eventInstances = new List<EventInstance>();
         _eventEmitters = new List<StudioEventEmitter>();
 
+        ResetBus();
+    }
+
+    public void ResetBus(){
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
+
+        if(AreBusesValid()){
+            _areBusesValid = true;
+        }
     }
+
+    private bool AreBusesValid()
+{
+        if (!masterBus.isValid())
+        {
+            Debug.LogError("Master Bus não está conectado ou válido.");
+            return false;
+        }
+        if (!musicBus.isValid())
+        {
+            Debug.LogError("Music Bus não está conectado ou válido.");
+            return false;
+        }
+        if (!ambienceBus.isValid())
+        {
+            Debug.LogError("Ambience Bus não está conectado ou válido.");
+            return false;
+        }
+        if (!sfxBus.isValid())
+        {
+            Debug.LogError("SFX Bus não está conectado ou válido.");
+            return false;
+        }
+        Debug.Log("Todos os Buses estão válidos.");
+    return true;
+}
 
     public void UpdateVolume(){
         masterBus.setVolume(masterVolume);
@@ -46,6 +82,9 @@ public class AudioManager : Singleton<AudioManager>
 
     #region SFX
     public void PlayOneShot(EventReference sound, Vector3 worldPos = default){
+        if(!_areBusesValid)
+            return;
+        
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
 

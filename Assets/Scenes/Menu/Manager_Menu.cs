@@ -39,41 +39,55 @@ public class Manager_Menu : MonoBehaviour
     #region Scene Management
     private void OnLoadScene() {
         //Play Song Menu
-        AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MenuMusic, MusicIntensity.Intensity3);
+        AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicMenu, MusicIntensity.Intensity3);
     }
 
     #endregion
 
     #region Onclick
 
+    public void Onclick_Open(GameObject menuContainer, GameObject firstButton){
+        _mainContainer.SetActive(false);
+        menuContainer.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(firstButton);
+    }
+
+    public void Onclick_Close(GameObject menuContainer, GameObject menuButton){
+        _mainContainer.SetActive(true);
+        menuContainer.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(menuButton);
+    }
+
+    //--Menu Play
     public void OnClick_Play(){
         GameManager.Instance.LoadScene(_playScene);
     }
 
     //--Menu Settings
     public void OnClick_Settings(){
-        _mainContainer.SetActive(false);
-        _settingsContainer.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(_settingsFirstButton);
+        Onclick_Open(_settingsContainer, _settingsFirstButton);
     }
 
     public void OnClick_SettingsClose(){
-        _mainContainer.SetActive(true);
-        _settingsContainer.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(_settingsButton);
+        Onclick_Close(_settingsContainer, _settingsButton);
+    }
+
+    //--Menu Ranking
+    public void OnClick_Ranking(){
+        // Onclick_Open(, );
+    }
+
+    public void OnClick_RakingClose(){
+        // Onclick_Close(, );
     }
 
     //--Menu Credits
     public void OnClick_Credits(){
-        _mainContainer.SetActive(false);
-        _creditsContainer.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(_creditsFirstButton);
+        Onclick_Open(_creditsContainer, _creditsFirstButton);
     }
 
     public void OnClick_CreditsClose(){
-        _mainContainer.SetActive(true);
-        _creditsContainer.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(_creditsButton);
+        Onclick_Close(_creditsContainer, _creditsButton);
     }
 
     //--Menu Exit

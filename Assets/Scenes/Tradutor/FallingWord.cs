@@ -8,10 +8,12 @@ public class FallingWord : MonoBehaviour
     [SerializeField] public string Word; // A palavra que o jogador precisa digitar
     [SerializeField] private TextMeshPro _textMesh;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private ParticleSystem _particles;
 
     [SerializeField] private float baseSpeed = 1f; // Velocidade base
     private float speedMultiplier = 1f; // Multiplicador de velocidade
     private float _spawnTime; // Tempo em que a palavra aparece na tela
+    private bool _isActive = true;
 
     [Header("Ajuste de texto")]
     public Vector2 padding = new Vector2(0.5f, 0.5f); // Espaço extra ao redor do texto
@@ -23,16 +25,29 @@ public class FallingWord : MonoBehaviour
 
     private void Update()
     {
+        if(!_isActive)
+            return;
         // Faz a palavra cair
         transform.Translate(Vector3.down * baseSpeed * speedMultiplier * Time.deltaTime);
     }
 
     public void OnGetCorrectWord(){
-        Destroy(gameObject);
+        _particles.Play();
+        OnDestroyWord(_particles);
     }
 
     public void OnLostWord(){
-        Destroy(gameObject);
+        _particles.Play();
+        OnDestroyWord(_particles);
+    }
+
+    private void OnDestroyWord(ParticleSystem particleMain){
+        _isActive = false;
+        _spriteRenderer.enabled = false;
+        _textMesh.enabled = false;
+
+        float totalDuration = particleMain.main.duration + particleMain.main.startLifetime.constantMax;
+        Destroy(gameObject, totalDuration);
     }
 
     private void AdjustSize()

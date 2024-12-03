@@ -35,7 +35,7 @@ public class PauseManager : MonoBehaviour
         InputManager.playerInputActions.Player.Enable();
     }
 
-    public void ChangePauseState(){
+    private void ChangePauseState(){
         if(!IsPaused)
             PauseGame();
         else
@@ -47,6 +47,10 @@ public class PauseManager : MonoBehaviour
         AudioManager.Instance.StopAmbience();
         AudioManager.Instance.StopMusic();
         GameManager.Instance.LoadScene(SceneIndex.Menu);
+        ChangePauseState();
+    }
+
+    public void Resume(){
         ChangePauseState();
     }
 }
