@@ -25,7 +25,8 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     [Header("Values")]
     [SerializeField] private SceneIndex _nextLevelIndex;
     [SerializeField] private bool _isStoryLevel = false;
-    private const float DELAY_TO_START = 0.25f;
+    private const float DELAY_TO_START = 1.5f;
+    private const float DELAY_TO_END = 1.5f;
 
     #region Unity Setup
     private void OnEnable() {
@@ -73,9 +74,9 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     [ButtonMethod]
     private void OnEndLevel(){
         if(_isStoryLevel)
-            Invoke(nameof(EndLevelDialogue), DELAY_TO_START);
+            Invoke(nameof(EndLevelDialogue), DELAY_TO_END);
         else
-            Invoke(nameof(WaitToCallGameOver), DELAY_TO_START);
+            Invoke(nameof(WaitToCallGameOver), DELAY_TO_END);
     }
 
     private void WaitToCallGameOver(){
@@ -101,7 +102,6 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 
     public void PlayAgain(){
         SetGameOverUI(false);
-        StartLevel();
     }
 
     public void BackToMenu(){

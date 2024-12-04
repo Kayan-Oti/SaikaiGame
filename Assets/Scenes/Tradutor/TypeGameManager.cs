@@ -116,6 +116,8 @@ public class TypeGameManager : Singleton<TypeGameManager>
 
     #region Set Up
     public void StartLevel(){
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LevelStart);
+
         ResetLevel();
         _spawner.StartSpawn();
         _timer.StartTimer(_startTime);
@@ -151,6 +153,8 @@ public class TypeGameManager : Singleton<TypeGameManager>
     }
 
     public void EndLevel(){
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LevelEnd);
+
         _isActive = false;
         _spawner.EndSpawn();
         ClearActiveWords();
@@ -190,6 +194,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
                 if(keyPressed == ' ' && typedWord.Length == 0)
                     continue;
 
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.Type);
                 typedWord += keyPressed;
             }
             
@@ -202,7 +207,6 @@ public class TypeGameManager : Singleton<TypeGameManager>
     private void CheckForMatch(){
         //O foreach é usado na lista de todos os objetos ativos, porque o jogador pode apagar, ou seja, o que anteriormente não estaria na lista de possibilidades pode entrar novamente.
         foreach(FallingWord wordObject in activeWordObjects.ToList()){
-            //
             if(CompareTypeAndObjects(wordObject))
                 break;
         }
@@ -248,6 +252,8 @@ public class TypeGameManager : Singleton<TypeGameManager>
     }
 
     private void OnTypeMiss(){
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.TypeMiss);
+        
         //Score
         SubtractScore();
 
@@ -259,6 +265,8 @@ public class TypeGameManager : Singleton<TypeGameManager>
     }
 
     private void OnWordMiss(){
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.WordMiss);
+
         //Push back the words
         ClearActiveWords();
 
@@ -267,6 +275,8 @@ public class TypeGameManager : Singleton<TypeGameManager>
     }
 
     private void OnHit(FallingWord word){
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.WordHit);
+
         // Calcula o tempo de reação
         float reactionTime = CalcRactionTime();
 

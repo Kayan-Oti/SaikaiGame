@@ -14,7 +14,7 @@ public class LoadingScreen : MonoBehaviour
     }
 
     public void OnEndLoadScene(Action DoLast){
-        // AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LoadingScreenEnd);
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.LoadingScreenEnd);
         _animation.PlayAnimation("End", DoLast);
     }
 }
