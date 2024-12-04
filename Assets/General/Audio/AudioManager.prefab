@@ -111,6 +111,55 @@ MonoBehaviour:
       Data3: 1078187145
       Data4: -1916592871
     Path: event:/SFX/UI/LoadScreenEnd
+  <Type>k__BackingField:
+    Guid:
+      Data1: -553471221
+      Data2: 1214110437
+      Data3: 683943073
+      Data4: 808728268
+    Path: event:/SFX/Level1/Type
+  <TypeMiss>k__BackingField:
+    Guid:
+      Data1: -1438539641
+      Data2: 1105367043
+      Data3: 178464406
+      Data4: -1063672637
+    Path: event:/SFX/Level1/TypeMiss
+  <WordSpawn>k__BackingField:
+    Guid:
+      Data1: 557922299
+      Data2: 1201015098
+      Data3: -622527849
+      Data4: 1475584001
+    Path: event:/SFX/Level1/WordSpawn
+  <WordHit>k__BackingField:
+    Guid:
+      Data1: 1980699732
+      Data2: 1253221472
+      Data3: 722380711
+      Data4: 1040143022
+    Path: event:/SFX/Level1/WordHit
+  <WordMiss>k__BackingField:
+    Guid:
+      Data1: 702496756
+      Data2: 1208102564
+      Data3: -193789800
+      Data4: 2022913245
+    Path: event:/SFX/Level1/WordMiss
+  <LevelStart>k__BackingField:
+    Guid:
+      Data1: -501694062
+      Data2: 1278402820
+      Data3: 1397466019
+      Data4: -1277145955
+    Path: event:/SFX/Level1/LevelStart
+  <LevelEnd>k__BackingField:
+    Guid:
+      Data1: -728003614
+      Data2: 1228266530
+      Data3: -109534290
+      Data4: 957235041
+    Path: event:/SFX/Level1/LevelEnd
 --- !u!114 &7250550239246050745
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,6 +79,8 @@ public class SpawnerWords : MonoBehaviour
             wordObject.SetSpeedMultiplier(TypeGameManager.Instance.SpeedMultiplier); // Passa a velocidade atual
             TypeGameManager.Instance.AddWord(wordObject);
         }
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.WordSpawn);
     }
 
     public void SetSpawnInterval(float newInterval)
