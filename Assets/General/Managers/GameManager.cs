@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager>
         yield return WaitLoading();
 
         //On Scene Loaded
-        InvokeOnLoadedScene();
+        EventManager.GameManager.OnLoadedScene.Get().Invoke();
     }
 
     #endregion
@@ -67,13 +67,13 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void OnSceneLoaded(){
-        _blockRaycast.blocksRaycasts = false;
         Time.timeScale = 1.0f;
         //Animação ao terminar de Carrega
-        _loadingScreen.OnEndLoadScene(InvokeOnLoadedScene);
+        _loadingScreen.OnEndLoadScene(WaitAnimationLoading);
     }
 
-    private void InvokeOnLoadedScene(){
+    private void WaitAnimationLoading(){
+        _blockRaycast.blocksRaycasts = false;
         EventManager.GameManager.OnLoadedScene.Get().Invoke();
     }
 }

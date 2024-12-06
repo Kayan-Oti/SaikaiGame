@@ -24,7 +24,9 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 
     [Header("Values")]
     [SerializeField] private SceneIndex _nextLevelIndex;
-    [SerializeField] private bool _isStoryLevel = false;
+    [SerializeField] private bool _triggerDialogue = false;
+    [SerializeField] private bool _triggerTutorial = false;
+
     private const float DELAY_TO_START = 1.5f;
     private const float DELAY_TO_END = 1.5f;
 
@@ -32,11 +34,13 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     private void OnEnable() {
         EventManager.GameManager.OnLoadedScene.Get().AddListener(OnLoadedScene);
         EventManager.LevelManager.OnLevelEnd.Get().AddListener(OnEndLevel);
+        EventManager.LevelManager.OnTutorialEnd.Get().AddListener(OnEndTutorial);
     }
 
     private void OnDisable(){
         EventManager.GameManager.OnLoadedScene.Get().RemoveListener(OnLoadedScene);
         EventManager.LevelManager.OnLevelEnd.Get().RemoveListener(OnEndLevel);
+        EventManager.LevelManager.OnTutorialEnd.Get().RemoveListener(OnEndTutorial);
     }
 
     #endregion
@@ -46,7 +50,7 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
         //Play Song
         AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicTradutor);
         
-        if(_isStoryLevel)
+        if(_triggerDialogue)
             Invoke(nameof(StartDialogue), DELAY_TO_START);
         else
             Invoke(nameof(StartLevel), DELAY_TO_START);
@@ -54,12 +58,24 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 
     [ButtonMethod]
     private void StartDialogue(){
-        _dialogueManager.StartDialogue(_dialogueStart, StartLevel);
+        _dialogueManager.StartDialogue(_dialogueStart, _triggerTutorial ? StartTutorial : StartLevel);
     }
 
-    [ButtonMethod]
     private void EndLevelDialogue(){
+        _triggerDialogue = false;
         _dialogueManager.StartDialogue(_dialogueEnd, () => SetGameOverUI(true));
+    }
+
+    #endregion
+
+    #region Tutorial
+    
+    private void StartTutorial(){
+        EventManager.LevelManager.OnTutorialStart.Get().Invoke();
+    }
+
+    private void OnEndTutorial(){
+        StartLevel();
     }
 
     #endregion
@@ -71,9 +87,8 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
         EventManager.LevelManager.OnLevelStart.Get().Invoke();
     }
 
-    [ButtonMethod]
     private void OnEndLevel(){
-        if(_isStoryLevel)
+        if(_triggerDialogue)
             Invoke(nameof(EndLevelDialogue), DELAY_TO_END);
         else
             Invoke(nameof(WaitToCallGameOver), DELAY_TO_END);

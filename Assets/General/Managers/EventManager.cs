@@ -37,5 +37,9 @@ public static class EventManager
         public GenericEvent<CountDownEnd> OnCountDownEnd = new GenericEvent<CountDownEnd>();
         public class CountDownCycle: UnityEvent {}
         public GenericEvent<CountDownCycle> OnCountDownCycle = new GenericEvent<CountDownCycle>();
+        public class TutorialStart: UnityEvent {}
+        public GenericEvent<TutorialStart> OnTutorialStart = new GenericEvent<TutorialStart>();
+        public class TutorialEnd: UnityEvent {}
+        public GenericEvent<TutorialEnd> OnTutorialEnd = new GenericEvent<TutorialEnd>();
     }
 }

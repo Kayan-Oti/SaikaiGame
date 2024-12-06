@@ -432,6 +432,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed97eda0e0d2b1946977c7219fdc45bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShakeSettings:
+    strength: {x: 1, y: 1, z: 0}
+    duration: 1
+    frequency: 10
+    enableFalloff: 1
+    falloffEase: 0
+    strengthOverTime:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    asymmetry: 0
+    easeBetweenShakes: 0
+    cycles: 1
+    startDelay: 0
+    endDelay: 0
+    useUnscaledTime: 0
+    useFixedUpdate: 0
 --- !u!1 &850031157
 GameObject:
   m_ObjectHideFlags: 0

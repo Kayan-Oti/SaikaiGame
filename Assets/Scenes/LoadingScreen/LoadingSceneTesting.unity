@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!225 &181649529 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2823904838251884628, guid: c60f1a1e7db084e44952908df1b41606, type: 3}
+  m_PrefabInstance: {fileID: 828013213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &534493640 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1006827186401834816, guid: c60f1a1e7db084e44952908df1b41606, type: 3}
@@ -146,6 +151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2906886749420886673, guid: 4266a83158a567544b8f0fe698ba42c5, type: 3}
+      propertyPath: _blockRaycast
+      value: 
+      objectReference: {fileID: 181649529}
     - target: {fileID: 2906886749420886673, guid: 4266a83158a567544b8f0fe698ba42c5, type: 3}
       propertyPath: _loadingScreen
       value: 
