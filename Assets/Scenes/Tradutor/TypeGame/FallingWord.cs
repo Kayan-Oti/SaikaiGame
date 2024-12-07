@@ -1,0 +1,135 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using PrimeTween;
+
+public class FallingWord : MonoBehaviour
+{
+    [SerializeField] public string Word; // A palavra que o jogador precisa digitar
+    [SerializeField] private TextMeshPro _textMesh;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private ParticleSystem _particles;
+    [SerializeField] private TweenSettings<float> _tweenSettings;
+    [SerializeField] private float baseSpeed = 1f; // Velocidade base
+    private float speedMultiplier = 1f; // Multiplicador de velocidade
+    private float _spawnTime; // Tempo em que a palavra aparece na tela
+    private bool _isActive = false;
+
+    [Header("Ajuste de texto")]
+    public Vector2 padding = new Vector2(0.5f, 0.5f); // Espaço extra ao redor do texto
+
+    private void OnEnable()
+    {
+        _spawnTime = Time.time; // Armazena o tempo de spawn da palavra
+    }
+
+    private void Update()
+    {
+        if(!_isActive)
+            return;
+        // Faz a palavra cair
+        transform.Translate(Vector3.down * baseSpeed * speedMultiplier * Time.deltaTime);
+    }
+
+    public void StartFallingWord(string word, float multiplier){
+        //Word
+        Word = word;
+        _textMesh.text = word;
+        AdjustSize();
+
+        //Speed
+        speedMultiplier = multiplier;
+
+        Tween.PositionY(target: transform, settings: _tweenSettings)
+            .OnComplete(target: this, target => target._isActive = true);
+    }
+
+    #region Settings
+    
+    private void AdjustSize()
+    {
+        // Garante que o TextMeshPro atualize seus valores
+        _textMesh.ForceMeshUpdate();
+
+        // Obtém os bounds renderizados do texto
+        Bounds textBounds = _textMesh.bounds;
+
+        // Calcula o tamanho dos bounds em relação à escala do texto
+        Vector3 textScale = _textMesh.transform.lossyScale;
+        Vector2 adjustedSize = new Vector2(
+            textBounds.size.x * textScale.x,
+            textBounds.size.y * textScale.y
+        );
+
+        // Ajusta o tamanho do SpriteRenderer com base no texto
+        _spriteRenderer.size = adjustedSize + padding;
+    }
+
+    public void SetColor(string typedWord){
+        // Inicializa partes formatadas
+        string correctPart = "";
+        string incorrectPart = "";
+        string remainingPart = "";
+
+        bool isIncorret = false;
+        for (int i = 0; i < typedWord.Length; i++)
+        {
+            if (i >= Word.Length)
+                break;
+            
+            //Se já foi incorreto anteriormente, pula direto pro else
+            if (!isIncorret && char.ToUpper(typedWord[i]) == char.ToUpper(Word[i])){
+                correctPart += $"<color=yellow>{Word[i]}</color>";
+            }
+            else{
+                if (Word[i] == ' ') // Espaço em branco correto
+                    incorrectPart += $"<color=red>_</color>";
+                else
+                    incorrectPart += $"<color=red>{Word[i]}</color>";
+                isIncorret = true;
+            }
+        }
+
+        // Parte restante da palavra que ainda não foi digitada
+        if (typedWord.Length < Word.Length)
+            remainingPart = Word.Substring(typedWord.Length);
+        
+
+        // Monta o texto formatado
+        string formattedText = correctPart + incorrectPart + remainingPart;
+        _textMesh.text = formattedText;
+
+        _spriteRenderer.color = Color.gray;
+    }
+
+    public void ResetColor(){
+        _textMesh.text = Word;
+        _spriteRenderer.color = Color.black;
+    }
+
+    #endregion
+
+    #region Events
+
+    public void OnGetCorrectWord(){
+        _particles.Play();
+        OnDestroyWord(_particles);
+    }
+
+    public void OnLostWord(){
+        _particles.Play();
+        OnDestroyWord(_particles);
+    }
+
+    private void OnDestroyWord(ParticleSystem particleMain){
+        _isActive = false;
+        _spriteRenderer.enabled = false;
+        _textMesh.enabled = false;
+
+        float totalDuration = particleMain.main.duration + particleMain.main.startLifetime.constantMax;
+        Destroy(gameObject, totalDuration);
+    }
+
+    #endregion
+}

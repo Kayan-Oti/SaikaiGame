@@ -5179,7 +5179,7 @@ Transform:
   m_GameObject: {fileID: 8804961279612006418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.79, z: 0}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5249,5 +5249,24 @@ MonoBehaviour:
   _textMesh: {fileID: 553762290271139059}
   _spriteRenderer: {fileID: 5134320649527067010}
   _particles: {fileID: 8648104700438616622}
+  _tweenSettings:
+    startFromCurrent: 0
+    startValue: 5.5
+    endValue: 4.75
+    settings:
+      duration: 1
+      ease: 1
+      customEase:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      cycles: 1
+      cycleMode: 0
+      startDelay: 0
+      endDelay: 0
+      useUnscaledTime: 0
+      useFixedUpdate: 0
   baseSpeed: 1
   padding: {x: 0.4, y: 0.4}
