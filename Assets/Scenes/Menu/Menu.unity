@@ -2943,7 +2943,7 @@ PrefabInstance:
     - target: {fileID: 6812977765525908698, guid: fc7e2fe8efad1d340ad8aef8f36bcb63, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c1d3bf6b8217de1428f600dbc6a3ed80, type: 3}
+      objectReference: {fileID: 21300000, guid: 8eeeb5f3d8dadff4eba5dfdb7cd56965, type: 3}
     - target: {fileID: 7424169586648330679, guid: fc7e2fe8efad1d340ad8aef8f36bcb63, type: 3}
       propertyPath: m_text
       value: "Cr\xE9ditos"

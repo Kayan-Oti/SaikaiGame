@@ -9,7 +9,6 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 {
     [Header("GameObjects")]
     [SerializeField] private TypeGameManager _typeGameManager;
-    [SerializeField] private DialogueManager _dialogueManager;
     [SerializeField] private UI_ManagerAnimation _managerAnimation;
 
     [Header("UI Text")]
@@ -18,14 +17,8 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     [SerializeField] private TextMeshProUGUI _textHits;
     [SerializeField] private TextMeshProUGUI _textTypeMiss;
 
-    [Header("Dialogue")]
-    [SerializeField] private SO_Dialogue _dialogueStart;
-    [SerializeField] private SO_Dialogue _dialogueEnd;
-
     [Header("Values")]
     [SerializeField] private SceneIndex _nextLevelIndex;
-    [SerializeField] private bool _triggerDialogue = false;
-    [SerializeField] private bool _triggerTutorial = false;
 
     private const float DELAY_TO_START = 1.5f;
     private const float DELAY_TO_END = 1.5f;
@@ -45,36 +38,29 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
 
     #endregion
 
-    #region Dialogue Events
+    #region Events
     private void OnLoadedScene() {
         //Play Song
         AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicTradutor);
-        
-        if(_triggerDialogue)
-            Invoke(nameof(StartDialogue), DELAY_TO_START);
+
+        if(GameManager.Instance._activeTradutorTutorial)
+            Invoke(nameof(StartTutorial), DELAY_TO_START);
         else
             Invoke(nameof(StartLevel), DELAY_TO_START);
-    }
-
-    [ButtonMethod]
-    private void StartDialogue(){
-        _dialogueManager.StartDialogue(_dialogueStart, _triggerTutorial ? StartTutorial : StartLevel);
-    }
-
-    private void EndLevelDialogue(){
-        _triggerDialogue = false;
-        _dialogueManager.StartDialogue(_dialogueEnd, () => SetGameOverUI(true));
     }
 
     #endregion
 
     #region Tutorial
-    
+
+    [ButtonMethod]    
     private void StartTutorial(){
         EventManager.LevelManager.OnTutorialStart.Get().Invoke();
     }
 
     private void OnEndTutorial(){
+        GameManager.Instance._activeTradutorTutorial = false;
+        
         StartLevel();
     }
 
@@ -88,10 +74,7 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     }
 
     private void OnEndLevel(){
-        if(_triggerDialogue)
-            Invoke(nameof(EndLevelDialogue), DELAY_TO_END);
-        else
-            Invoke(nameof(WaitToCallGameOver), DELAY_TO_END);
+        Invoke(nameof(WaitToCallGameOver), DELAY_TO_END);
     }
 
     private void WaitToCallGameOver(){

@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private LoadingScreen _loadingScreen;
     [SerializeField] private CanvasGroup _blockRaycast;
     [SerializeField] private bool _loadSceneOnStart = true;
+    [Header("Level Variable")]
+    [SerializeField] public bool _activeTradutorTutorial = true;
     private List<AsyncOperation> _scenesLoading = new List<AsyncOperation>();
     private int _currentSceneIndex;
     private const float MIN_WAITSECONDS_LOADSCREEN = 0.75f;
