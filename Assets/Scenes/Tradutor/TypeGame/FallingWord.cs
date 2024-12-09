@@ -7,21 +7,34 @@ using PrimeTween;
 public class FallingWord : MonoBehaviour
 {
     [SerializeField] public string Word; // A palavra que o jogador precisa digitar
-    [SerializeField] private TextMeshPro _textMesh;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private ParticleSystem _particles;
-    [SerializeField] private TweenSettings<float> _tweenSettings;
     [SerializeField] private float baseSpeed = 1f; // Velocidade base
-    private float speedMultiplier = 1f; // Multiplicador de velocidade
-    private float _spawnTime; // Tempo em que a palavra aparece na tela
-    private bool _isActive = false;
+    [SerializeField] private TextMeshPro _textMesh;
 
     [Header("Ajuste de texto")]
     public Vector2 padding = new Vector2(0.5f, 0.5f); // Espaço extra ao redor do texto
 
+    [Header("Visual Effects")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private ParticleSystem _particlesOnHit;
+    [SerializeField] private ParticleSystem _particlesOnMiss;
+    [SerializeField] private TweenSettings<float> _tweenOnSpawn;
+    [SerializeField] private TweenSettings<Vector3> _tweenOnDestroy;
+    [SerializeField] private ShakeSettings _shakeOnType;
+    [SerializeField] private Color _defaultColor;
+    [SerializeField] private Color _highlightColor;
+    private Collider2D _collider;
+    private float speedMultiplier = 1f; // Multiplicador de velocidade
+    private float _spawnTime; // Tempo em que a palavra aparece na tela
+    private bool _isActive = false;
+
+
     private void OnEnable()
     {
         _spawnTime = Time.time; // Armazena o tempo de spawn da palavra
+    }
+    private void Start(){
+        _collider = GetComponent<Collider2D>();
+        ResetColor();
     }
 
     private void Update()
@@ -41,7 +54,7 @@ public class FallingWord : MonoBehaviour
         //Speed
         speedMultiplier = multiplier;
 
-        Tween.PositionY(target: transform, settings: _tweenSettings)
+        Tween.PositionY(target: transform, settings: _tweenOnSpawn)
             .OnComplete(target: this, target => target._isActive = true);
     }
 
@@ -100,34 +113,52 @@ public class FallingWord : MonoBehaviour
         string formattedText = correctPart + incorrectPart + remainingPart;
         _textMesh.text = formattedText;
 
-        _spriteRenderer.color = Color.gray;
+        //Box Color
+        _spriteRenderer.color = correctPart != "" ? _highlightColor : _defaultColor;
     }
 
     public void ResetColor(){
         _textMesh.text = Word;
-        _spriteRenderer.color = Color.black;
+        _spriteRenderer.color = _defaultColor;
     }
 
     #endregion
 
     #region Events
 
-    public void OnGetCorrectWord(){
-        _particles.Play();
-        OnDestroyWord(_particles);
+    public void OnType(string typedWord){
+        SetColor(typedWord);
+        Tween.ShakeLocalRotation(target: transform, _shakeOnType);
     }
 
-    public void OnLostWord(){
-        _particles.Play();
-        OnDestroyWord(_particles);
+    public void OnTypeMiss(string typedWord){
+        SetColor(typedWord);
+
     }
 
-    private void OnDestroyWord(ParticleSystem particleMain){
+    public void OnHitWord(){
+        AnimationEffect(_particlesOnHit);
+    }
+
+    public void OnMissWord(){
+        AnimationEffect(_particlesOnMiss);
+    }
+
+    private void AnimationEffect(ParticleSystem particleSystem){
         _isActive = false;
+        _collider.enabled = false;
+
+        Tween.Scale(target: transform, _tweenOnDestroy)
+        .OnComplete(target: this, target => target.ParticleEffect(particleSystem));
+    }
+
+    private void ParticleEffect(ParticleSystem particleSystem){
         _spriteRenderer.enabled = false;
         _textMesh.enabled = false;
 
-        float totalDuration = particleMain.main.duration + particleMain.main.startLifetime.constantMax;
+        particleSystem.Play();
+
+        float totalDuration = particleSystem.main.duration + particleSystem.main.startLifetime.constantMax;
         Destroy(gameObject, totalDuration);
     }
 
