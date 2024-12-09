@@ -75,7 +75,6 @@ public class TypeGameManager : Singleton<TypeGameManager>
     [Header("Shake Settings")]
     [SerializeField] private CameraShakeSettings _shakeOnTypeMiss;
     [SerializeField] private CameraShakeSettings _shakeOnWordMiss;
-    [SerializeField] private ShakeSettings _shakeOnType;
 
     [Header("Zoom Settings")]
     [SerializeField] private TweenSettings<float> _zoomOnWordHit;
@@ -214,63 +213,88 @@ public class TypeGameManager : Singleton<TypeGameManager>
                 typedWord += keyPressed;
             }
             
+            //Reset check
+            _hitOrMissThisFrame = false;
 
+            //Check for Match, Hits and misses
             CheckForMatch();
+
+            //---Visuals
+            //Text
             UpdateVisualInputText();
 
+            //Default Effect
             if(!_hitOrMissThisFrame)
                 EffectOnType();
-
-            _hitOrMissThisFrame = false;
         }
     }
 
     private void CheckForMatch(){
+        //Remove no final
+        List<FallingWord> removeFromPossibles = new List<FallingWord>();
+
         //O foreach é usado na lista de todos os objetos ativos, porque o jogador pode apagar, ou seja, o que anteriormente não estaria na lista de possibilidades pode entrar novamente.
         foreach(FallingWord wordObject in _activeWordObjects.ToList()){
-            if(CompareTypeAndObjects(wordObject))
-                break;
-        }
-    }
+            //Typed corret
+            if(wordObject.Word.StartsWith(typedWord, StringComparison.InvariantCultureIgnoreCase)){
+                //Type está correto
+                _isTypeWrong = false;
 
-    private bool CompareTypeAndObjects(FallingWord wordObject){
-        //Typed corret
-        if(wordObject.Word.StartsWith(typedWord, StringComparison.InvariantCultureIgnoreCase)){
-            //Type está correto
-            _isTypeWrong = false;
-
-            //Retorna a lista de possibilidades, se for preciso
-            if(!_possibleWords.Contains(wordObject))
-                _possibleWords.Add(wordObject);
-            
-            //Set Color
-            wordObject.SetColor(typedWord);
-
-            //Hit Word
-            if(wordObject.Word.Equals(typedWord, StringComparison.InvariantCultureIgnoreCase)){
-                OnHit(wordObject);
-                return true;
-            }
-        }
-        //Typed Incorrect
-        else if(_possibleWords.Contains(wordObject)){
-            //Missed the last possibleWord
-            if(_possibleWords.Count == 1 && typedWord.Length > 1){
-                wordObject.SetColor(typedWord);
-                if(!_isTypeWrong){
-                    _isTypeWrong = true;
-                    OnTypeMiss();
+                //Hit Word
+                if(wordObject.Word.Equals(typedWord, StringComparison.InvariantCultureIgnoreCase)){
+                    OnHit(wordObject);
+                    return;
                 }
+
+                //Retorna a lista de possibilidades, se for preciso
+                if(!_possibleWords.Contains(wordObject))
+                    _possibleWords.Add(wordObject);
+
+                //Default Effect
+                EffectWordType(wordObject);
             }
-            //Reset Color
-            else{
-                wordObject.ResetColor();
-                _possibleWords.Remove(wordObject);
+
+            //Typed Incorrect
+            else if(_possibleWords.Contains(wordObject)){
+                removeFromPossibles.Add(wordObject);
             }
         }
 
-        return false;
+        //Só existe uma situação em que possibleWord == 0
+        //Quando erra a primeira letra
+        if(_possibleWords.Count == 0){
+            _hitOrMissThisFrame = true;
+            EffectOnTypeMiss();
+            return;
+        }
+
+        //Return if doesnt have words to remove
+        if(removeFromPossibles.Count == 0)
+            return;
+        
+        //Check if all words will be removed
+        if(removeFromPossibles.Count == _possibleWords.Count){
+            //Keeps the last word
+            removeFromPossibles.Remove(_possibleWords[0]);
+
+            //Effects Continuos
+            EffectWordContinuosMiss(_possibleWords[0]);
+
+            //Effect FirstMiss
+            if(!_isTypeWrong){
+                _isTypeWrong = true;
+                OnTypeMiss();
+            }
+        }
+
+        //Remove all others misses
+        foreach(FallingWord wordForRemove in removeFromPossibles){
+            _possibleWords.Remove(wordForRemove);
+            wordForRemove.ResetColor();
+        }
     }
+
+    
 
     private void OnTypeMiss(){
         _hitOrMissThisFrame = true;
@@ -287,7 +311,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
         TypeMiss++;
     }
 
-    private void OnWordMiss(){
+    public void OnWordMiss(FallingWord wordObject){
         //Effect
         EffectOnWordMiss();
 
@@ -298,31 +322,26 @@ public class TypeGameManager : Singleton<TypeGameManager>
         ResetTypedWord();
     }
 
-    private void OnHit(FallingWord word){
+    private void OnHit(FallingWord wordObject){
         _hitOrMissThisFrame = true;
-        //Effect
-        EffectOnWordHit();
 
-        // Calcula o tempo de reação
-        float reactionTime = CalcRactionTime();
-
+        //Statistic
+        Hits++;
         //Score
-        AddScore(word.Word.Length);
-
+        AddScore(wordObject.Word.Length);
         //Combo
         AddCombo();
-
         // Ajusta Intervalo
-        DecreaseSpawnInterval(reactionTime);
-
-        //Disable Word
-        RemoveWord(word, true);
+        DecreaseSpawnInterval(CalcRactionTime());
 
         //Reset Input
         ResetTypedWord();
 
-        //Statistic
-        Hits++;
+        //Disable Word
+        RemoveWord(wordObject);
+
+        //Effect
+        EffectOnWordHit(wordObject);
     }
 
     private void ResetTypedWord()
@@ -334,7 +353,6 @@ public class TypeGameManager : Singleton<TypeGameManager>
             word.ResetColor();
 
         _possibleWords.Clear(); // Limpa a lista de palavras possíveis
-        _possibleWords = _activeWordObjects.ToList();
     }
 
     public void AddWord(FallingWord wordObject)
@@ -348,26 +366,16 @@ public class TypeGameManager : Singleton<TypeGameManager>
             _lastHitTime = Time.time;
     }
 
-    public void RemoveWord(FallingWord wordObject, bool typed)
+    public void RemoveWord(FallingWord wordObject)
     {
         _activeWordObjects.Remove(wordObject);
         _possibleWords.Remove(wordObject);
-
-        if(typed){
-            wordObject.OnGetCorrectWord();
-        }
-        // Quando a palavra atingir o DestroyWordArea
-        else{
-            wordObject.OnLostWord();
-            OnWordMiss();
-        }
     }
 
     private void ClearActiveWords(){
         foreach(FallingWord wordObject in _activeWordObjects.ToList()){
-            _activeWordObjects.Remove(wordObject);
-            _possibleWords.Remove(wordObject);
-            wordObject.OnLostWord();
+            RemoveWord(wordObject);
+            wordObject.OnMissWord();
         }
     }
 
@@ -495,13 +503,6 @@ public class TypeGameManager : Singleton<TypeGameManager>
 
     private void EffectOnType(){
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.Type);
-
-        //Zoom Effect
-        //Se o tamanho atual for menor que o valor proposto, usa o atual
-        // if(Camera.main.orthographicSize > _zoomOnType.startValue){
-        //     Tween.Custom(_zoomOnType,onValueChange: newVal => Camera.main.orthographicSize = newVal);
-        // }
-        Tween.ShakeLocalRotation(target: _possibleWords[0].transform, _shakeOnType);
     }
 
     private void EffectOnTypeMiss(){
@@ -509,14 +510,25 @@ public class TypeGameManager : Singleton<TypeGameManager>
         ShakeCamera(_shakeOnTypeMiss);
     }
 
-    private void EffectOnWordHit(){
+    private void EffectOnWordHit(FallingWord wordObject){
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.WordHit);
         Tween.Custom(_zoomOnWordHit,onValueChange: newVal => Camera.main.orthographicSize = newVal);
+        wordObject.OnHitWord();
     }
 
     private void EffectOnWordMiss(){
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.WordMiss);
         ShakeCamera(_shakeOnWordMiss);
+    }
+
+    private void EffectWordType(FallingWord wordObject){
+        //Effect
+        wordObject.OnType(typedWord);
+    }
+
+    private void EffectWordContinuosMiss(FallingWord wordObject){
+        //Effect
+        wordObject.OnTypeMiss(typedWord);
     }
 
     private void UpdateVisualInputText(){

@@ -10,7 +10,7 @@ public class DestroyWordArea : MonoBehaviour
         if (other.CompareTag("Word"))
         {
             FallingWord word = other.GetComponent<FallingWord>();
-            TypeGameManager.Instance.RemoveWord(word, false);
+            TypeGameManager.Instance.OnWordMiss(word);
         }
     }
 }
