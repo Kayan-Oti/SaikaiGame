@@ -14,6 +14,9 @@ public class Manager_Menu : MonoBehaviour
     [SerializeField] private GameObject _creditsContainer;
     [SerializeField] private GameObject _creditsButton;
     [SerializeField] private GameObject _creditsFirstButton;
+    
+    [Header("Ranking")]
+    [SerializeField] private LeaderboardManager _leaderboardManager;
 
     [Header("Levels")]
     [SerializeField] private SceneIndex _playScene;
@@ -74,11 +77,13 @@ public class Manager_Menu : MonoBehaviour
 
     //--Menu Ranking
     public void OnClick_Ranking(){
-        // Onclick_Open(, );
+        _mainContainer.SetActive(false);
+        _leaderboardManager.OpenLeaderBoard();
     }
 
     public void OnClick_RakingClose(){
-        // Onclick_Close(, );
+        _mainContainer.SetActive(true);
+        _leaderboardManager.CloseLeaderBoard();
     }
 
     //--Menu Credits
@@ -88,12 +93,6 @@ public class Manager_Menu : MonoBehaviour
 
     public void OnClick_CreditsClose(){
         Onclick_Close(_creditsContainer, _creditsButton);
-    }
-
-    //--Menu Exit
-    public void OnClick_Exit(){
-        Debug.Log("OnClick_Exit");
-        Application.Quit();
     }
 
     #endregion
