@@ -146,7 +146,6 @@ public class AudioManager : Singleton<AudioManager>
     }
 
     private void OnDestroy() {
-        Debug.Log("On Destroy");
         CleanUp();
     }
     #endregion

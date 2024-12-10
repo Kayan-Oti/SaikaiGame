@@ -10,7 +10,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private CanvasGroup _blockRaycast;
     [SerializeField] private bool _loadSceneOnStart = true;
     [Header("Level Variable")]
-    [SerializeField] public bool _activeTradutorTutorial = true;
+    [SerializeField] public bool ActiveTradutorTutorial = true;
+    [Header("Player Data")]
+    [SerializeField] public string PlayerDisplayName = "Leitor";
     private List<AsyncOperation> _scenesLoading = new List<AsyncOperation>();
     private int _currentSceneIndex;
     private const float MIN_WAITSECONDS_LOADSCREEN = 0.75f;
@@ -21,7 +23,6 @@ public class GameManager : Singleton<GameManager>
             StartCoroutine(FirstScene(SceneIndex.Menu));
     }
 
-    //Method similar to LoadScene, but without animation
     public IEnumerator FirstScene(SceneIndex scene){
         //Scene to load
         _scenesLoading.Add(SceneManager.LoadSceneAsync((int)scene, LoadSceneMode.Additive));
@@ -30,8 +31,8 @@ public class GameManager : Singleton<GameManager>
         //Wait loading
         yield return WaitLoading();
 
-        //On Scene Loaded
-        EventManager.GameManager.OnLoadedScene.Get().Invoke();
+        //Animação ao terminar de Carrega
+        _loadingScreen.OnEndLoadScene(WaitAnimationLoading);
     }
 
     #endregion

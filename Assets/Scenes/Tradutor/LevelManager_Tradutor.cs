@@ -10,6 +10,7 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     [Header("GameObjects")]
     [SerializeField] private TypeGameManager _typeGameManager;
     [SerializeField] private UI_ManagerAnimation _managerAnimation;
+    [SerializeField] private LeaderboardManager _leaderboardManager;
 
     [Header("UI Text")]
     [SerializeField] private TextMeshProUGUI _textScore;
@@ -43,7 +44,7 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
         //Play Song
         AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicTradutor);
 
-        if(GameManager.Instance._activeTradutorTutorial)
+        if(GameManager.Instance.ActiveTradutorTutorial)
             Invoke(nameof(StartTutorial), DELAY_TO_START);
         else
             Invoke(nameof(StartLevel), DELAY_TO_START);
@@ -59,7 +60,7 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     }
 
     private void OnEndTutorial(){
-        GameManager.Instance._activeTradutorTutorial = false;
+        GameManager.Instance.ActiveTradutorTutorial = false;
         
         StartLevel();
     }
@@ -74,6 +75,9 @@ public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
     }
 
     private void OnEndLevel(){
+        if(_typeGameManager.Score > _leaderboardManager.GetCurrentScore()){
+            _leaderboardManager.SubmitNewEntry(_typeGameManager.Score, _typeGameManager.Hits.ToString());
+        }
         Invoke(nameof(WaitToCallGameOver), DELAY_TO_END);
     }
 
