@@ -5,7 +5,7 @@ using MyBox;
 using TMPro;
 using UnityEngine;
 
-public class LevelManager_Tradutor : Singleton<LevelManager_Tradutor>
+public class LevelManager_Tradutor : MonoBehaviour
 {
     [Header("GameObjects")]
     [SerializeField] private TypeGameManager _typeGameManager;

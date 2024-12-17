@@ -22,6 +22,7 @@ public class LeaderboardManager : MonoBehaviour
     [Header("Search Query Essentials:")]
     [SerializeField] private TMP_InputField _pageInput;
     [SerializeField] private int _defaultPageNumber = 1, _defaultEntriesToTake = 100;
+    [SerializeField] private Color _highlightPageInputColor;
 
     [Header("Player Data:")]
     [SerializeField] private EntryDisplay _personalEntryDisplay;
@@ -30,6 +31,7 @@ public class LeaderboardManager : MonoBehaviour
     private LeaderboardReference _leaderboardReference = Leaderboards.SaikaiEspecialNatal;
     private int _maxPages = 1;
     private Entry _playerEntry;
+    private Color _defaultPageInputColor;
 
     #region Setup
     private void Start()
@@ -68,7 +70,8 @@ public class LeaderboardManager : MonoBehaviour
         StartCoroutine(LoadingTextCoroutine(_LoadingPlayerText));
         _blockInteract.blocksRaycasts = false;
 
-        _pageInput.onValueChanged.AddListener(_ => _pageInput.image.color = Color.yellow);
+        _defaultPageInputColor = _pageInput.image.color;
+        _pageInput.onValueChanged.AddListener(_ => _pageInput.image.color = _highlightPageInputColor);
 
         _pageInput.placeholder.GetComponent<TextMeshProUGUI>().text = _defaultPageNumber.ToString();
     }
@@ -90,7 +93,7 @@ public class LeaderboardManager : MonoBehaviour
             Take = take
         };
         
-        _pageInput.image.color = Color.white;
+        _pageInput.image.color = _defaultPageInputColor;
         
         _leaderboardReference.GetEntries(searchQuery, OnLeaderboardLoaded, ErrorCallback);
         _leaderboardReference.GetEntryCount(SetMaxPage, ErrorCallback);
@@ -99,6 +102,7 @@ public class LeaderboardManager : MonoBehaviour
 
     public void SubmitNewEntry(int playerScore,  string extraData)
     {
+        playerScore = Mathf.Max(0, playerScore);
         _leaderboardReference.UploadNewEntry(GameManager.Instance.PlayerDisplayName, playerScore, extraData, OnSubmit, ErrorCallback);
         ToggleLoadingEntries(true);
         ToggleLoadingPlayerEntrie(true);
@@ -120,8 +124,13 @@ public class LeaderboardManager : MonoBehaviour
     }
     private void OnSubmit(bool success)
     {
-        if (success)
+        if (success){
+            Debug.Log("Submit - Sucess");
             Reload();
+        }
+        else{
+            Debug.Log("Submit - Unsucess");
+        }
     }
         
 
@@ -188,7 +197,7 @@ public class LeaderboardManager : MonoBehaviour
         
         GameManager.Instance.PlayerDisplayName = _playerUsernameInput.text;
 
-        if(_personalEntryDisplay.GetRank() == "??"){
+        if(_playerEntry.Rank == 0){
             _personalEntryDisplay.SetName(_playerUsernameInput.text);
         }else{
             SubmitNewEntry(_playerEntry.Score, _playerEntry.Extra);
@@ -255,7 +264,7 @@ public class LeaderboardManager : MonoBehaviour
     [ButtonMethod]
     public void NewEntryTest()
     {
-        SubmitNewEntry(100, "10");
+        SubmitNewEntry(0, "10");
     }
 
     #endregion
