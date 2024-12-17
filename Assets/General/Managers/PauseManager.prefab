@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7301a8de8e366834991f47d41f778596, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dfbc623851c46c4786f7b3fb56f38d2, type: 3}
   m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 3
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2976994618799373522
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +895,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Resume
       objectReference: {fileID: 0}
+    - target: {fileID: 9155457493576624623, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155457493576624623, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190200
+      objectReference: {fileID: 0}
     - target: {fileID: 9204695819887780583, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: m_Name
       value: Resume_Button
@@ -940,7 +948,7 @@ PrefabInstance:
     - target: {fileID: 5081685303248450690, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 023eab17710a7924ebb36602dd48ac1f, type: 3}
+      objectReference: {fileID: 21300000, guid: e6e19482352e72f45a7f2a5855768972, type: 3}
     - target: {fileID: 5976617950051159325, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: _onclick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1028,6 +1036,14 @@ PrefabInstance:
     - target: {fileID: 8632167103202788919, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155457493576624623, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155457493576624623, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190200
       objectReference: {fileID: 0}
     - target: {fileID: 9204695819887780583, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: m_Name

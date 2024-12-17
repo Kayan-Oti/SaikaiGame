@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c86506edfbbb1d94baa36231a04aab51
+guid: 78c129becb3506f4aa7a6ead84511b65
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Caveat
+  - Galdeano
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
