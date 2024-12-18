@@ -1,9 +1,7 @@
 Seita
 Cultivador
-Dao
 Arte Marcial
 Reencarnação
-Qi
 Espada
 Dragão
 Monte Celestial
@@ -19,8 +17,6 @@ Talismã
 Formação
 Montanha
 Lótus
-Fênix
-Chakra
 Sábio
 Escritura
 Herança
@@ -165,6 +161,7 @@ Armadura Espiritual
 Artefato Antigo
 Artefato Divino
 Pílula Medicinal
+Pílula de Crescimento
 Pílula Espiritual
 Anel de Armazenamento
 Pingente
