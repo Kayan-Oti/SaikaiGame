@@ -24,14 +24,8 @@ public class FallingWord : MonoBehaviour
     [SerializeField] private Color _highlightColor;
     private Collider2D _collider;
     private float speedMultiplier = 1f; // Multiplicador de velocidade
-    private float _spawnTime; // Tempo em que a palavra aparece na tela
     private bool _isActive = false;
 
-
-    private void OnEnable()
-    {
-        _spawnTime = Time.time; // Armazena o tempo de spawn da palavra
-    }
     private void Start(){
         _collider = GetComponent<Collider2D>();
         ResetColor();

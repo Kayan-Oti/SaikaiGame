@@ -7,7 +7,13 @@ using UnityEngine;
 
 public class LeaderboardManager : MonoBehaviour
 {
+    enum Enum_LeaderBoardReference {
+        Tradutor = 0,
+        Revisor
+    }
+
     [Header("Leaderboard Essentials:")]
+    [SerializeField] private Enum_LeaderBoardReference _leaderBoardEnum;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private Transform _entryDisplayParent;
     [SerializeField] private EntryDisplay _entryDisplayPrefab;
@@ -28,7 +34,7 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private EntryDisplay _personalEntryDisplay;
     [SerializeField] private TMP_InputField _playerUsernameInput;
 
-    private LeaderboardReference _leaderboardReference = Leaderboards.SaikaiEspecialNatal;
+    private LeaderboardReference _leaderboardReference;
     private int _maxPages = 1;
     private Entry _playerEntry;
     private Color _defaultPageInputColor;
@@ -36,6 +42,14 @@ public class LeaderboardManager : MonoBehaviour
     #region Setup
     private void Start()
     {
+        if(_leaderBoardEnum == Enum_LeaderBoardReference.Tradutor){
+            _leaderboardReference = Leaderboards.SaikaiEspecialNatal;
+        }
+        else if(_leaderBoardEnum == Enum_LeaderBoardReference.Revisor){
+            _leaderboardReference = Leaderboards.SaikaiEspecialNatal2;
+        }
+
+        
         InitializeComponents();
         _canvas.enabled = false;
 
