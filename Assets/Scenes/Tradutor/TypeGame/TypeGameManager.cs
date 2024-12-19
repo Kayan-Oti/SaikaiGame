@@ -293,9 +293,7 @@ public class TypeGameManager : Singleton<TypeGameManager>
             wordForRemove.ResetColor();
         }
     }
-
     
-
     private void OnTypeMiss(){
         _hitOrMissThisFrame = true;
         //Effect

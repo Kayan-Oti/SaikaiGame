@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private bool _loadSceneOnStart = true;
     [Header("Level Variable")]
     [SerializeField] public bool ActiveTradutorTutorial = true;
+    [SerializeField] public bool ActiveRevisorTutorial = true;
     [Header("Player Data")]
     [SerializeField] public string PlayerDisplayName = "Leitor";
     private List<AsyncOperation> _scenesLoading = new List<AsyncOperation>();

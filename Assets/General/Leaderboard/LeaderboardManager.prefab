@@ -3393,6 +3393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39eb8e1753e5984381aecd8f73021aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeaderBoardEnum: 0
   _canvas: {fileID: 6162193651366482283}
   _entryDisplayParent: {fileID: 2792025735357724057}
   _entryDisplayPrefab: {fileID: 6437793870990273599, guid: 8ef4e3ab9fca58c499f1f598bed132d7, type: 3}
@@ -3401,6 +3402,7 @@ MonoBehaviour:
   _LoadingText: {fileID: 3853261646529414361}
   _LoadingPlayerCanvasGroup: {fileID: 7471025377767924816}
   _LoadingPlayerText: {fileID: 7186705689465704992}
+  _title: {fileID: 7912141240627180510}
   _pageInput: {fileID: 7352942019840319591}
   _defaultPageNumber: 1
   _defaultEntriesToTake: 100

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tradutor/TradutorLevel.unity
     guid: d55086e2f0cb00748a632c084dc8eae0
+  - enabled: 1
+    path: Assets/Scenes/Revisor/RevisorLevel.unity
+    guid: 391fba549f951d44ca81abbcb4319687
   m_configObjects: {}

@@ -54,6 +54,8 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
     [SerializeField] private float SPAWN_INTERVAL_MAX = 6.0f; // Valor máximo do intervalo de spawn
     [Tooltip("Incremento de Intervalo, quando palavra é spawnada")]
     [SerializeField] private float SPAWN_INTERVAL_INCREASE = 0.25f; // Valor usado ao spawnar uma palavra
+    [Tooltip("Quanto cada palavra ativa multiplica o incremento, em %")]
+    [SerializeField] private float INCREASE_BY_AMOUNT_OF_WORDS = 10f; // Valor usado aumentar o intervaso
     [Tooltip("Exponencial que controla mudanças no Intervalo de Spawn")]
     [SerializeField] private AnimationCurve SPAWN_EXPONENCIAL_CURVE; // Valor usado ao spawnar uma palavra
 
@@ -86,7 +88,7 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
 
     //Conditions
     private float _lastHitTime = 0f; // Momento do último acerto
-    private bool _hasActiveWords;
+    private bool _hasActiveWords = false;
 
     private void OnEnable()
     {
@@ -127,6 +129,8 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
         _comboCount = 0;
 
         _lastHitTime = 0f;
+
+        _hasActiveWords = false;
 
         Score = 0;
         MaxCombo = 1f;
@@ -208,11 +212,6 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
 
         // Atualiza o intervalo acumulativamente
         SpawnInterval = Mathf.Clamp(SpawnInterval + adjustedInterval, SPAWN_INTERVAL_MIN, SPAWN_INTERVAL_MAX);
-
-        // Atualiza o spawn interval no Spawner
-        // _spawner.SetSpawnInterval(SpawnInterval);
-
-        // Debug.Log($"Novo Spawn Interval: {SpawnInterval} (Reação: {reactionTime}, Ajuste: {intervalAdjustment}, Expo: {adjustedInterval})");
     }
 
     private void IncreaseSpawnInterval(){
@@ -220,12 +219,9 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
         float increaseTime = CalcExponencial(SPAWN_INTERVAL_INCREASE, true);
 
         // --- --- --- Spawn Interval --- --- ---
-        SpawnInterval = Mathf.Min(SpawnInterval + increaseTime, SPAWN_INTERVAL_MAX);
-        
-        // Atualiza o spawn interval no Spawner
-        // _spawner.SetSpawnInterval(SpawnInterval);
-
-        // Debug.Log($"Increase Interval: {SpawnInterval}, Increase: {increaseTime})");
+        float capMax = Mathf.Min(SpawnInterval + increaseTime, SPAWN_INTERVAL_MAX);
+        float increaseByWordsActive = capMax * (1 + (_activeWordObjects.Count*INCREASE_BY_AMOUNT_OF_WORDS/100));
+        SpawnInterval = increaseByWordsActive;
     }
 
     private float CalcRactionTime(){
@@ -297,7 +293,8 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
     }
 
     public void OnLostWord(FallingWord_Revisor wordObject){
-        RemoveWord(wordObject);
+        //Push back the words
+        ClearActiveWords();
 
         //Effect
         EffectOnLostWord();
@@ -307,16 +304,22 @@ public class RevisorGameManager : Singleton<RevisorGameManager>
     {
         _activeWordObjects.Add(wordObject);
 
-        //Invertal
-        IncreaseSpawnInterval();
-
-        if(!_hasActiveWords)
+        if(!_hasActiveWords){
             _lastHitTime = Time.time;
+            _hasActiveWords = true;
+        }
+        else if(_activeWordObjects.Count > 2){
+            IncreaseSpawnInterval();
+        }
     }
 
     public void RemoveWord(FallingWord_Revisor wordObject)
     {
         _activeWordObjects.Remove(wordObject);
+
+        if(_activeWordObjects.Count == 0)
+            _hasActiveWords = false;
+        
     }
 
     private void ClearActiveWords(){

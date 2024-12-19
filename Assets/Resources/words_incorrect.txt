@@ -187,7 +187,6 @@ Picco Solittário
 Laggo Místtico
 Caverrna Ocultta
 Deserto Sem Fimm
-Pântano dos Mil Venenoss
 Planície Sagradus
 Camppo de Battallha
 Ciddade Celextial
@@ -205,7 +204,7 @@ Ancesstral
 Jovem Messtre
 Discípulo Júnnior
 Discípulo Séniior
-Júnior Irmãoo
+Irmãoo Júnior
 Sénnior Irmã
 Antagonnista
 Protagonnista

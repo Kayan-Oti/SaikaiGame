@@ -3,24 +3,24 @@ using UnityEngine.EventSystems;
 
 public class Manager_Menu : MonoBehaviour
 {
-    [Header("Play")]
+    [Header("Main")]
     [SerializeField] private GameObject _mainContainer;
     [SerializeField] private GameObject _playButton;
+    [SerializeField] private GameObject _settingsButton;
+    [SerializeField] private GameObject _creditsButton;
+
+    [Header("Level Selector")]
+    [SerializeField] private GameObject _levelContainer;
+    [SerializeField] private GameObject _levelButtonFirst;
     [Header("Settings")]
     [SerializeField] private GameObject _settingsContainer;
-    [SerializeField] private GameObject _settingsButton;
     [SerializeField] private GameObject _settingsFirstButton;
     [Header("Credits")]
     [SerializeField] private GameObject _creditsContainer;
-    [SerializeField] private GameObject _creditsButton;
     [SerializeField] private GameObject _creditsFirstButton;
     
     [Header("Ranking")]
     [SerializeField] private LeaderboardManager _leaderboardManager;
-
-    [Header("Levels")]
-    [SerializeField] private SceneIndex _playScene;
-
 
     private void OnEnable() {
         EventManager.GameManager.OnLoadedScene.Get().AddListener(OnLoadScene);
@@ -35,6 +35,7 @@ public class Manager_Menu : MonoBehaviour
     }
     private void WaitStart(){
         EventSystem.current.SetSelectedGameObject(_playButton);
+        _levelContainer.SetActive(false);
         _settingsContainer.SetActive(false);
         _creditsContainer.SetActive(false);
     }
@@ -63,7 +64,19 @@ public class Manager_Menu : MonoBehaviour
 
     //--Menu Play
     public void OnClick_Play(){
-        GameManager.Instance.LoadScene(_playScene);
+        Onclick_Open(_levelContainer, _levelButtonFirst);
+    }
+
+    public void OnClick_PlayClose(){
+        Onclick_Close(_levelContainer, _playButton);
+    }
+
+    public void OnClick_LevelTradutor(){
+        GameManager.Instance.LoadScene(SceneIndex.Tradutor);
+    }
+
+    public void OnClick_LevelRevisor(){
+        GameManager.Instance.LoadScene(SceneIndex.Revisor);
     }
 
     //--Menu Settings
@@ -84,6 +97,10 @@ public class Manager_Menu : MonoBehaviour
     public void OnClick_RakingClose(){
         _mainContainer.SetActive(true);
         _leaderboardManager.CloseLeaderBoard();
+    }
+
+    public void Onclick_SwitchRanking(){
+        _leaderboardManager.ChangeLeaderBoard(_leaderboardManager.LeaderBoardEnum == Enum_LeaderBoardReference.Tradutor ? Enum_LeaderBoardReference.Revisor : Enum_LeaderBoardReference.Tradutor);
     }
 
     //--Menu Credits
