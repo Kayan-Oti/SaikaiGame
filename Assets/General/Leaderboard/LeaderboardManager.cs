@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Dan.Main;
 using Dan.Models;
@@ -5,15 +6,16 @@ using MyBox;
 using TMPro;
 using UnityEngine;
 
+[Serializable]
+public enum Enum_LeaderBoardReference {
+    Tradutor = 0,
+    Revisor
+}
+
 public class LeaderboardManager : MonoBehaviour
 {
-    enum Enum_LeaderBoardReference {
-        Tradutor = 0,
-        Revisor
-    }
-
     [Header("Leaderboard Essentials:")]
-    [SerializeField] private Enum_LeaderBoardReference _leaderBoardEnum;
+    [SerializeField] public Enum_LeaderBoardReference LeaderBoardEnum;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private Transform _entryDisplayParent;
     [SerializeField] private EntryDisplay _entryDisplayPrefab;
@@ -24,6 +26,8 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _LoadingText;
     [SerializeField] private CanvasGroup _LoadingPlayerCanvasGroup;
     [SerializeField] private TextMeshProUGUI _LoadingPlayerText;
+    [Header("Others UIs:")]
+    [SerializeField] private TextMeshProUGUI _title;
 
     [Header("Search Query Essentials:")]
     [SerializeField] private TMP_InputField _pageInput;
@@ -42,18 +46,29 @@ public class LeaderboardManager : MonoBehaviour
     #region Setup
     private void Start()
     {
-        if(_leaderBoardEnum == Enum_LeaderBoardReference.Tradutor){
-            _leaderboardReference = Leaderboards.SaikaiEspecialNatal;
-        }
-        else if(_leaderBoardEnum == Enum_LeaderBoardReference.Revisor){
-            _leaderboardReference = Leaderboards.SaikaiEspecialNatal2;
-        }
-
+        SetLeaderboardReference();
         
         InitializeComponents();
         _canvas.enabled = false;
 
         _leaderboardReference.GetPersonalEntry(GetPlayerEntry, ErrorCallback);
+    }
+
+    public void ChangeLeaderBoard(Enum_LeaderBoardReference leaderboard){
+        LeaderBoardEnum = leaderboard;
+        SetLeaderboardReference();
+        Reload();
+    }
+
+    private void SetLeaderboardReference(){
+        if(LeaderBoardEnum == Enum_LeaderBoardReference.Tradutor){
+            _leaderboardReference = Leaderboards.SaikaiEspecialNatal;
+            _title.text = "Ranking Tradutor";
+        }
+        else if(LeaderBoardEnum == Enum_LeaderBoardReference.Revisor){
+            _leaderboardReference = Leaderboards.SaikaiEspecialNatal2;
+            _title.text = "Ranking Revisor";
+        }
     }
 
     private void GetPlayerEntry(Entry entry){

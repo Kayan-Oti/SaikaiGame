@@ -43,7 +43,7 @@ public class LevelManager_Revisor : MonoBehaviour
         //Play Song
         AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicTradutor);
 
-        if(GameManager.Instance.ActiveTradutorTutorial)
+        if(GameManager.Instance.ActiveRevisorTutorial)
             Invoke(nameof(StartTutorial), DELAY_TO_START);
         else
             Invoke(nameof(StartLevel), DELAY_TO_START);
@@ -59,7 +59,7 @@ public class LevelManager_Revisor : MonoBehaviour
     }
 
     private void OnEndTutorial(){
-        GameManager.Instance.ActiveTradutorTutorial = false;
+        GameManager.Instance.ActiveRevisorTutorial = false;
         
         StartLevel();
     }

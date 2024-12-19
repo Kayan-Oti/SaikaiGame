@@ -3,39 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using PrimeTween;
-using MyBox;
+using System;
 
-public class FallingWord_Revisor : MonoBehaviour
+public class TutorialRevisor_FallingWord : MonoBehaviour
 {
-    [Header("Debug")]
-    [SerializeField] [ReadOnly] private string _word;
-    [SerializeField] [ReadOnly] private bool _isCorrect;
+    [Header("Settings")]
+    [SerializeField] private string _word;
+    [SerializeField] private bool _isCorrect;
 
     [Header("Components")]
     [SerializeField] private TextMeshPro _textMesh;
     [SerializeField] private BoxCollider2D _collider;
 
     [Header("Settings")]
-    [SerializeField] private float _baseSpeed = 1f; // Velocidade base
-    public Vector2 Padding = new Vector2(0.5f, 0.5f); // Espaço extra ao redor do texto
+    public Vector2 padding = new Vector2(0.4f, 0.4f); // Espaço extra ao redor do texto
 
     [Header("Visual Effects")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private ParticleSystem _particlesOnHit;
-    [SerializeField] private ParticleSystem _particlesOnMiss;
     [SerializeField] private TweenSettings<Vector3> _tweenOnDestroy;
-    private float _speedMultiplier = 1f; // Multiplicador de velocidade
-    private bool _isActive = false;
-    private float _horizontalSpeed = 0;
-    private int _horizontalDirection = 0;
-    private float MIN_SPEED_HORIZONTAL = 0.25f;
+    [SerializeField] private ShakeSettings _shakeOnMiss;
 
-    private void Update()
-    {
-        if(!_isActive)
-            return;
-        // Faz a palavra cair
-        transform.Translate(new Vector3(_horizontalSpeed * _horizontalDirection, -_baseSpeed * _speedMultiplier, 0) * Time.deltaTime);
+    [Header("Tutorial Settings")]
+    [SerializeField] private TweenSettings<Vector3> _fallingWordAnimation;
+    public event Action OnDestroyTrigger;
+
+    private void Start() {
+        _textMesh.text = _word;
+        AdjustSize();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -54,38 +49,17 @@ public class FallingWord_Revisor : MonoBehaviour
                 OnMissWord();
             return;
         }
-
-        if(other.gameObject.CompareTag("DestroyArea")){
-            LostWord();
-            return;
-        }
-
-        if(other.gameObject.CompareTag("Wall")){
-            _horizontalDirection*=-1;
-            return;
-        }
     }
 
+    public void StartFalling(){
+        Tween.LocalPositionAtSpeed(target: transform, settings: _fallingWordAnimation);
+    }
+
+    private void OnDestroy(){
+        OnDestroyTrigger?.Invoke();
+    }
 
     #region Settings
-    public void StartFallingWord(string word, bool isCorrect, float speedMultiplier){
-        //Word
-        _word = word;
-        _textMesh.text = word;
-        AdjustSize();
-
-        //Type
-        _isCorrect = isCorrect;
-
-        //Speed
-        _speedMultiplier = speedMultiplier;
-
-        _horizontalSpeed = Random.Range(0+MIN_SPEED_HORIZONTAL, _speedMultiplier);
-
-        _horizontalDirection = Random.Range(-1,2);
-
-        _isActive = true;
-    }
     
     private void AdjustSize()
     {
@@ -103,7 +77,7 @@ public class FallingWord_Revisor : MonoBehaviour
         );
 
         // Ajusta o tamanho do SpriteRenderer e Collider
-        _spriteRenderer.size = adjustedSize + Padding;
+        _spriteRenderer.size = adjustedSize + padding;
         _collider.size = adjustedSize;
     }
 
@@ -112,26 +86,20 @@ public class FallingWord_Revisor : MonoBehaviour
     #region Events
 
     private void OnHitWord(){
-        RevisorGameManager.Instance.OnHit(this);
+        //Avisa que foi destruido
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.WordHit);
         AnimationEffect(_particlesOnHit);
     }
 
     private void OnMissWord(){
-        RevisorGameManager.Instance.OnMiss(this);
-        AnimationEffect(_particlesOnMiss);
-    }
+        //Avisa que foi errado
 
-    private void LostWord(){
-        RevisorGameManager.Instance.OnLostWord(this);
-        AnimationEffect(_particlesOnMiss);
-    }
-
-    public void EffectOnEnd(){
-        AnimationEffect(_particlesOnMiss);
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.TypeMiss);
+        Tween.ShakeLocalRotation(target: transform, _shakeOnMiss);
     }
 
     private void AnimationEffect(ParticleSystem particleSystem){
-        _isActive = false;
         _collider.enabled = false;
 
         Tween.Scale(target: transform, _tweenOnDestroy)

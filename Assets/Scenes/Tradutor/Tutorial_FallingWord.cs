@@ -23,6 +23,7 @@ public class Tutorial_FallingWord : MonoBehaviour
     public void StartFalling(){
         Tween.LocalPositionAtSpeed(target: transform, settings: _fallingWordAnimation);
     }
+    
     public void OnGetCorrectWord(){
         _particles.Play();
         OnDestroyWord(_particles);

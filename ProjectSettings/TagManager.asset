@@ -8,6 +8,7 @@ TagManager:
   - CorrectTrigger
   - IncorrectTrigger
   - DestroyArea
+  - Wall
   layers:
   - Default
   - TransparentFX

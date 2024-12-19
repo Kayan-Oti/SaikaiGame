@@ -3515,7 +3515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 771188112128416068, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_text
-      value: "Ol\xE1, bem-vindo ao primeiro desafio do Especial de Natal!"
+      value: Bem-vindo ao desafio do Tradutor do Especial de Natal!
       objectReference: {fileID: 0}
     - target: {fileID: 3927244476414386166, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_Sprite
