@@ -571,7 +571,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d073eb173ef5449a29d4b1ecf71700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scaleEffect: 1.15
+  _duration: 0.25
   _onclick:
+    m_PersistentCalls:
+      m_Calls: []
+  _onSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDeselect:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7982807088026035051

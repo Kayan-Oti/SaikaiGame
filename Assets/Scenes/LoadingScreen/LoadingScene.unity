@@ -377,6 +377,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1914406365872284226, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914406365872284226, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1914406365872284226, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2724415021690795900, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -392,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 2724415021690795900, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2986672119167467909, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_Spacing
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3418562280367470362, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_AnchorMax.y
@@ -449,6 +465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4732639173427374207, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_Spacing
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5165154329407839968, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -484,6 +504,18 @@ PrefabInstance:
     - target: {fileID: 6116704637502754661, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_Name
       value: PauseManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236567246162791352, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236567246162791352, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236567246162791352, guid: f0b65531a82389c459e62ade18377386, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8830165163203306592, guid: f0b65531a82389c459e62ade18377386, type: 3}
       propertyPath: m_AnchorMax.y

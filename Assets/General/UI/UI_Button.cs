@@ -2,20 +2,27 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UI_Button : UI_Abstract_Selectable, IPointerEnterHandler, IPointerExitHandler, ISubmitHandler, IPointerClickHandler
 {
+    [SerializeField] protected float _scaleEffect = 1.15f;
+    [SerializeField] protected float _duration = 0.25f;
+    [SerializeField] private Navigation _navigation;
     [SerializeField] protected UnityEvent _onclick;
+    [SerializeField] protected UnityEvent _onSelect;
+    [SerializeField] protected UnityEvent _onDeselect;
     protected override void OnSelectDo(BaseEventData eventData)
     {
-        OnEnterEvent();
-        Vector3 scale  = new Vector3(1.25f, 1.25f, 1);
-        transform.DOScale(scale, 0.25f);
+        OnSelectEvent();
+        Vector3 scale  = new Vector3(_scaleEffect, _scaleEffect, 1);
+        transform.DOScale(scale, _duration);
     }
 
    protected override void OnDeselectDo(BaseEventData eventData)
     {
-        transform.DOScale(Vector3.one, 0.25f);
+        OnDeselectEvent();
+        transform.DOScale(Vector3.one, _duration);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -29,19 +36,24 @@ public class UI_Button : UI_Abstract_Selectable, IPointerEnterHandler, IPointerE
     {
         OnClickEvent();
     }
+    public void OnSubmit(BaseEventData eventData)
+    {
+        OnClickEvent();
+    }
 
     protected virtual void OnClickEvent(){
         _onclick.Invoke();
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ButtonClick, transform.position);
     }
 
-    protected virtual void OnEnterEvent(){
+    protected virtual void OnSelectEvent(){
+        _onSelect.Invoke();
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ButtonHover, transform.position);
     }
 
-    public void OnSubmit(BaseEventData eventData)
-    {
-        OnClickEvent();
+    protected virtual void OnDeselectEvent(){
+        _onDeselect.Invoke();
     }
+
 
 }

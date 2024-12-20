@@ -17,8 +17,6 @@ Talismã
 Formação
 Montanha
 Lótus
-Fênix
-Chakra
 Sábio
 Escritura
 Herança
@@ -34,8 +32,6 @@ Serenidade
 Alma
 Harmonia
 Iluminação
-Karma
-Yang
 Equilíbrio
 Tranquilidade
 Bambu
@@ -49,7 +45,6 @@ Caverna
 Sabedoria
 Mentor
 Eremita
-Mandala
 Chapéu de Palha
 Cortina de Seda
 Paz Interior
@@ -124,7 +119,6 @@ Reino Demoníaco
 Reino Imortal
 Reino Infernal
 Reino de Ascensão
-Reino de Transcendência
 Reino do Vazio
 Reino da Verdade
 Reino do Caos
@@ -158,6 +152,7 @@ Armadura Espiritual
 Artefato Antigo
 Artefato Divino
 Pílula Medicinal
+Pílula de Crescimento
 Pílula Espiritual
 Anel de Armazenamento
 Pingente
@@ -176,7 +171,6 @@ Vale Escondido
 Terra Proibida
 Palácio Celestial
 Templo Antigo
-Floresta dos Espíritos
 Abismo Demoníaco
 Ruínas Antigas
 Pico Solitário
@@ -191,7 +185,6 @@ Muralha Espiritual
 Praça do Clã
 Sede do Clã
 Biblioteca Antiga
-Refúgio dos Imortais
 Vila Abandonada
 Portão Celestial
 Mestre Ancião
