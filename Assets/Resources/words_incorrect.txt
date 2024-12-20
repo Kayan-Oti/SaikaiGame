@@ -1,255 +1,525 @@
-Xeita
-Cultivayor
-Arte Marxial
-Reencarnassão
-Espaza
-Drawão
-Monte Celextial
-Pílalu
-Imovtal
-Demônii
-Técmika
-Anceswtral
-Discípluo
-Pácto
-Chamass
-Tallismã
-Formmação
-Montannha
-Lótrus
-Sábyo
-Escrittura
-Herânssa
-Tigre Brancho
-Clãn
-Destinhu
-Vennerável
-Páctu
-Protessão
-Renascimenntu
-Camiño Celestial
-Meditadorr
-Sereniddade
-Allma
-Harmmonia
-Illuminação
-Carma
-Zehn
-Yinn
-Yanq
-Equilíbro
-Tranquilidaade
-Bambuh
-Montannha
-Refuggiu
-Espectrro
-Incennso
-Chamma Azul
-Auura
-Caverrna
-Sabedoriaa
-Mentorr
-Ereemita
-Manddalla
-Chapéu de Palhha
-Cortinna de Sedda
-Pazz Interior
-Chha Verdee
-Caminho do Meiu
-Arti Secretta
-Habiilidade
-Concenttração
-Refinnamento
-Aprimorramento
-Estággio
-Messtre
-Subjuggção
-Ascencão
-Protessão
-Formmação
-Guarddião
-Barreeira
-Fagullha
-Evoluizão
-Cicclo
-Transformaçãoo
-Clãn
-Arenna
-Rivall
-Desafiu
-Confronntu
-Discipliina
-Guerrreiro
-Práttica
-Determinatte
-Ello
-Despertarr
-Foorça Vital
-Matrizz
-Movvimento
-Gollpe
-Percepçãoo
-Impacttu
-Fúrria
-Energizaçãoo
-Funddação
-Reinnho
-Circulaçãao
-Fluxxuo
-Canall
-Meriddiano
-Acumulaçãao
-Converggência
-Exxaustão
-Rejuvennascimento
-Vigorr
-Respiraçãao
-Reservattório
-Essênccia
-Enargia Espiritual
-Enerrgia Demoníaca
-Energgia Elementtal
-Espírrito de Batalha
-Energgia Sagradda
-Estabilidadde
-Aurra
-Dança do Qii
-Conttenção
-Conttrole
-Desbalançamentoo
-Dilattção
-Reino Mortalx
-Reion Marcial
-Reino Espirituall
-Reino Celextial
-Reino Divinno
-Reino Demoníacco
-Reino Immortal
-Rieno Infernal
-Reino de Ascenssão
-Reino de Transcendênciaa
-Reino do Vaziu
-Reino da Verdeda
-Reino do Caoss
-Renio Supremo
-Reino de Despertarr
-Reino da Origgim
-Reino do Doã
-Reino da Eternnidade
-Reino do Julggamento
-Reino Stellarr
-Reino dos Draggões
-Renio da Fênix
-Estággio Básico
-Estágiu Intermediário
-Estágio Avançavo
-Picco do Estágio
-Técinca Secreta
-Técnica Prohibida
-Técmica Supremma
-Arte de Espadda
-Atre de Lança
-Arte de Punhho
-Arti do Dragão
-Técmica de Ilusão
-Técnica Elementtal
-Espada Londga
-Espada Curtta
-Espadda Divina
-Lança Sagradda
-Armmadura Espiritual
-Arttéfato Antiggo
-Arttéfato Divinno
-Pílula Medicinaal
-Pílala de Crescimento
-Píllula Espirituall
-Annél de Armazenamemto
-Pingente
-Cristall de Energgia
-Tesorro Secrettto
-Lótrus Sagradus
-Herânsa Divinna
-Manuscrito Antiggo
-Escrittura Proibida
-Grimórrio
-Amuuleto
-Runnas
-Cajjado
-Montannha Sagradus
-Vallle Escondiddo
-Terra Prohibida
-Palácio Celextial
-Temmplo Antiggo
-Floresta dos Espírritos
-Abissmo Demoníacco
-Ruínas Antiggas
-Picco Solittário
-Laggo Místtico
-Caverrna Ocultta
-Deserto Sem Fimm
-Planície Sagradus
-Camppo de Battallha
-Ciddade Celextial
-Fortalêzza Divinna
-Murallha Espirituall
-Praçça do Clãnn
-Seddde do Clãnn
-Bibliotceca Antigga
-Refuggio dos Immortaiss
-Villla Abandonadda
-Portão Celextial
-Messtre Ancinnão
-Patrríarca
-Ancesstral
-Jovem Messtre
-Discípulo Júnnior
-Discípulo Séniior
-Irmãoo Júnior
-Sénnior Irmã
-Antagonnista
-Protagonnista
-Herdeiiro
-Vennerável
+Setia
+Cutlivador
+Arte Marical
+Reencranação
+Esapda
+Dargão
+Motne Celestial
+Píllua
+Imoratl
+Dmeônio
+Tcénica
+Ancetsral
+Discíuplo
+Pcato
+Cahmas
+Talsimã
+Fomração
+Mnotanha
+Ltóus
+Sáibo
+Esrcitura
+Heraçna
+Tigre Barnco
+Destnio
+Vneerável
+Pcato
+Porteção
+Renascimneto
+Camihno Celestial
+Mdeitador
+Seernidade
+Amla
+Hramonia
+Iulminação
+Equliíbrio
+Tranuqilidade
+Bmabu
+Montnaha
+Refúigo
+Espcetro
+Icnenso
+Cahma Azul
+Arua
+Cavrena
+Sabedoira
+Mnetor
+Ermeita
+Chpaéu de Palha
+Cotrina de Seda
+Paz nIterior
+Cáh Verde
+Camihno do Meio
+Arte Scereta
+Habiliddae
+Concenrtação
+Refianmento
+Aprimormaento
+Estáigo
+Msetre
+Sbujugação
+Acsensão
+Proteãço
+Fomração
+Guaridão
+Barreria
+Fgaulha
+Evoulção
+Ccilo
+Transfomração
+Arnea
+Riavl
+Desaifo
+Cnofronto
+Disicplina
+Guereriro
+Pártica
+Dteerminante
+Dsepertar
+Froça Vital
+Mtariz
+Movmiento
+Glope
+Pecrepção
+Ipmacto
+Frúia
+Enregização
+Fundçaão
+Renio
+Ciruclação
+Flxuo
+Cnaal
+Mreidiano
+Aucmulação
+Convergnêcia
+Eaxustão
+Rejvuenescimento
+Viogr
+Respriação
+Reesrvatório
+Essnêcia
+Energi aEspiritual
+EnergiaD emoníaca
+Energia lEemental
+Espíirto de Batalha
+Energia Sagarda
+Estabiildade
+Arua
+Dançad o Qi
+Contenãço
+Cotnrole
+Desbalanceaemnto
+Diltaação
+Reino Moratl
+Reino aMrcial
+Reino Espiirtual
+Reion Celestial
+Reino Diivno
+Rieno Demoníaco
+Reino mIortal
+Reino nIfernal
+Reino de Asecnsão
+Reino doV azio
+Reino d aVerdade
+Rein odo Caos
+Reion Supremo
+Reino de eDspertar
+Renio da Origem
+Reion do Dao
+Reino da Eterniadde
+Reino do Julgametno
+Rieno Estelar
+Reino ods Dragões
+Reino da Fnêix
+Estágio Báisco
+Esátgio Intermediário
+Estágoi Avançado
+Pico do Estgáio
+Téncica Secreta
+Técnica Priobida
+Tcénica Suprema
+Arte ed Espada
+Art ede Lança
+Atre de Punho
+Arte do Dargão
+Tcénica de Ilusão
+Técncia Elemental
+Espaad Longa
+Espada Curat
+Espad aDivina
+Lança Sargada
+Armadura Esipritual
+Artefaot Antigo
+Artefato Diivno
+Pílula Medciinal
+Pílulad e Crescimento
+Pílula Espriitual
+Anel de Armzaenamento
+Pinegnte
+Crsital de Energia
+Tseouro Secreto
+Lótus Sargado
+Herança Diivna
+Manuscrito nAtigo
+Escritura Proiibda
+Grimróio
+Aumleto
+Rnuas
+Cjaado
+Motnanha Sagrada
+Vale Esconiddo
+TerraP roibida
+Palácio Cleestial
+Templo Atnigo
+Absimo Demoníaco
+Ríunas Antigas
+Pic oSolitário
+Lago Místcio
+Cavenra Oculta
+Deserto SemF im
+Planície aSgrada
+Cmapo de Batalha
+Cidade Celetsial
+Fortaleza Divnia
+Muralha Espiirtual
+Praça od Clã
+Sdee do Clã
+Bibliotcea Antiga
+Vlia Abandonada
+Portão eClestial
+Mestre nAcião
+Ptariarca
+Ancestarl
+Jovme Mestre
+Dicsípulo Júnior
+Discípulo Sênoir
+Jnuior Irmão
+SêniorI rmã
+Antagonsita
+Protagonsita
+Herdiero
+Veneráevl
 Ajno
-Demonnio
-Deus da Guerrra
-Tigre Occulto
-Dragãoo Adormmecido
-Sábyo
-Ereemitta
-Líder do Clãnn
-Monngee
-Espadacchinn
-Ladddão
-Tiranno
-Reyy
-Imperradorr
-Rainnha
-Prinncesa
-Generral
-Guardda Imperiall
-Cultivador Errrante
-Guarddião dos Céus
-Destinhu
-Causa e Effeito
-Lei Celextial
-Provaçãoo
-Ciclo de Reencarnassão
-Orddeem Naturall
-Protessão Divinna
-Allma Gêmeaa
-Votto de Sanggue
-Ressurrreição
-Sacrrifício
-Renascimenntu
-Decrreto Celextial
-Contratto Espirituall
-Vontade do Céu
-Dommínio
-Camadaa Dimensional
-Portão Espirituall
-Gema do Destinhu
-Energaia Primordial
-Raiz Espirritual
-Linhna de Sangue
-Corppo Divinno
+Demôino
+Deus d aGuerra
+Tgire Oculto
+Dragão Adoremcido
+Sbáio
+Ermeita
+Líderd o Clã
+Mnoge
+Espaadchim
+Ldarão
+Triano
+Msetre Ancião
+Patirarca
+Ancesrtal
+Joevm Mestre
+Irmão Jnúior
+Sêniro Irmã
+Antgaonista
+Prtoagonista
+Hredeiro
+Venerváel
+Demôino
+Deus daG uerra
+TigreO culto
+Dargão Adormecido
+Eermita
+Espdaachim
+Lardão
+Tirnao
+Imeprador
+Raniha
+Princsea
+Gneeral
+Guarda Impeiral
+Cultviador Errante
+Guardião do sCéus
+Detsino
+Cuasa e Efeito
+Lie Celestial
+Provçaão
+Ciclo de Reencarnçaão
+Odrem Natural
+Prtoeção Divina
+Amla Gêmea
+Voto de Sanuge
+Ressrureição
+Sacrfiício
+Renascmiento
+Decreto eClestial
+Contarto Espiritual
+Vonatde do Céu
+Domníio
+Camada Dimnesional
+PortãoE spiritual
+Geam do Destino
+Energia Primoridal
+Raiz Esipritual
+Linha ed Sangue
+Corpo Diivno
+Sieta
+Cultivdaor
+Atre Marcial
+Renecarnação
+Epsada
+Drgaão
+Monte Ceelstial
+Píllua
+Imoratl
+Dmeônio
+Tcénica
+Ancestarl
+Discípluo
+Patco
+Cahmas
+Talsimã
+Foramção
+Monatnha
+Ltóus
+Sbáio
+Escrtiura
+Hreança
+Tirge Branco
+Destnio
+Vneerável
+Patco
+Protçeão
+Renascmiento
+Caminho eClestial
+Mdeitador
+Sereindade
+Amla
+Hamronia
+Iluimnação
+Equliíbrio
+Tranquiildade
+Bmabu
+Monatnha
+Refgúio
+Epsectro
+Icnenso
+Cahma Azul
+Arua
+Cavenra
+Sbaedoria
+Menotr
+Eremtia
+Chapéu de Plaha
+Cotrina de Seda
+Paz Itnerior
+Cáh Verde
+Caimnho do Meio
+Arte Secrtea
+Habildiade
+Concentarção
+Rfeinamento
+Arpimoramento
+Esátgio
+Mesrte
+Subjuagção
+Acsensão
+Protçeão
+Formaãço
+Guradião
+Barriera
+Fauglha
+Evloução
+Ccilo
+Transfomração
+Aerna
+Rvial
+Deasfio
+Cnofronto
+Discpilina
+Geurreiro
+Pártica
+Dteerminante
+Despretar
+Foçra Vital
+Matirz
+Mvoimento
+Glope
+Percpeção
+Ipmacto
+Frúia
+Eenrgização
+Fnudação
+Rieno
+Cicrulação
+Fulxo
+Cnaal
+Meridinao
+Acuumlação
+Cnovergência
+Exausãto
+Reujvenescimento
+Vgior
+Resipração
+Resrevatório
+Essêncai
+Energia sEpiritual
+Energia Demonaíca
+Energia lEemental
+Espíritod e Batalha
+EnergiaS agrada
+Establiidade
+Arua
+Danç ado Qi
+Cotnenção
+Contorle
+Desbalacneamento
+Dilataãço
+Reion Mortal
+Reino Marical
+Reino Espiritaul
+Reino Celestail
+Reino iDvino
+Renio Demoníaco
+Reino Imoratl
+Rein oInfernal
+Reino d eAscensão
+Reinod o Vazio
+Reino ad Verdade
+Reino od Caos
+Reino Suprmeo
+Renio de Despertar
+Rein oda Origem
+Rieno do Dao
+Reino daE ternidade
+Rieno do Julgamento
+Renio Estelar
+Rein odos Dragões
+Reino d aFênix
+Esátgio Básico
+Estáigo Intermediário
+Estágio Avançdao
+Pico do Etságio
+Técncia Secreta
+Técniac Proibida
+Técnica Spurema
+Arte de Esapda
+Arte de Laçna
+Aret de Punho
+Arte do Dargão
+Téncica de Ilusão
+Técncai Elemental
+EspadaL onga
+Espada Cutra
+Espada iDvina
+LançaS agrada
+Armadura Espirtiual
+ArtefatoA ntigo
+Artefato iDvino
+PílulaM edicinal
+Pílula de Crecsimento
+Plíula Espiritual
+Anle de Armazenamento
+Pnigente
+Critsal de Energia
+Tesouro Secerto
+Lótsu Sagrado
+Hernaça Divina
+Manuscrtio Antigo
+Escritur aProibida
+Griómrio
+Aumleto
+Rnuas
+Cjaado
+Monatnha Sagrada
+Val eEscondido
+Trera Proibida
+Plaácio Celestial
+TemploA ntigo
+Aibsmo Demoníaco
+Ríunas Antigas
+Pico Soliátrio
+Lgao Místico
+Caverna cOulta
+Deserot Sem Fim
+Planície Sargada
+Cmapo de Batalha
+Cidade Celesital
+Fortaleza Dviina
+Muralha Espirtiual
+Parça do Clã
+Sede doC lã
+Bilbioteca Antiga
+Vlia Abandonada
+Protão Celestial
+Metsre Ancião
+Ptariarca
+Acnestral
+Jovem Msetre
+Dicsípulo Júnior
+Discípulo Sênoir
+Junior Irãmo
+Sênior Imrã
+Atnagonista
+Protagoinsta
+Hredeiro
+Venerváel
+Anoj
+Demônoi
+Deus da uGerra
+TigreO culto
+Dragão Adromecido
+Sbáio
+Ermeita
+Ldíer do Clã
+Mnoge
+Espadacihm
+Ldarão
+Tiarno
+Mestr eAncião
+Patriraca
+Ancsetral
+Jovem eMstre
+Irmão Júinor
+Snêior Irmã
+Antagonsita
+Protagonsita
+Hedreiro
+Veenrável
+Deômnio
+Dues da Guerra
+Tigre Ouclto
+Dragoã Adormecido
+Sbáio
+Eermita
+Líderd o Clã
+Mogne
+Esapdachim
+Lardão
+Triano
+Ipmerador
+Raihna
+Pricnesa
+Genearl
+Gurada Imperial
+Cultivdaor Errante
+Guardião dos éCus
+Dsetino
+Causa e Efieto
+Lei Celestail
+Provaãço
+Ciclo de Reecnarnação
+Ordem Ntaural
+Protçeão Divina
+Alm aGêmea
+Voto de Sagnue
+Ressurreiãço
+Scarifício
+Renasciemnto
+Decrteo Celestial
+Contrato Epsiritual
+Vontaed do Céu
+Dmoínio
+Camada Dimensioanl
+Protão Espiritual
+Gema do Destnio
+Eenrgia Primordial
+Raiz Espiirtual
+Linhad e Sangue
+Cropo Divino

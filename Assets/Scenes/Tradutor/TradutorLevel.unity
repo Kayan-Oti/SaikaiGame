@@ -3179,8 +3179,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 771188112128416068, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_text
-      value: "Boa sorte, e lembre-se  que a cima de velocidade, a qualidade \xE9
-        nossa prioridade!"
+      value: "Boa sorte, e lembre-se  que acima de velocidade, a qualidade \xE9 nossa
+        prioridade!"
       objectReference: {fileID: 0}
     - target: {fileID: 3927244476414386166, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_Sprite
@@ -4120,7 +4120,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2659878406860475962, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}

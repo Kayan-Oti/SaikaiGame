@@ -893,7 +893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9155457493576624623, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: m_text
-      value: Resume
+      value: Retomar
       objectReference: {fileID: 0}
     - target: {fileID: 9155457493576624623, guid: 8f52c9cb755806a45b2a3397d0777fe7, type: 3}
       propertyPath: m_fontColor.r

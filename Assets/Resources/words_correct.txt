@@ -21,7 +21,6 @@ Sábio
 Escritura
 Herança
 Tigre Branco
-Clã
 Destino
 Venerável
 Pacto
@@ -33,10 +32,6 @@ Serenidade
 Alma
 Harmonia
 Iluminação
-Karma
-Zen
-Yin
-Yang
 Equilíbrio
 Tranquilidade
 Bambu
@@ -50,7 +45,6 @@ Caverna
 Sabedoria
 Mentor
 Eremita
-Mandala
 Chapéu de Palha
 Cortina de Seda
 Paz Interior
@@ -73,7 +67,6 @@ Fagulha
 Evolução
 Ciclo
 Transformação
-Clã
 Arena
 Rival
 Desafio
@@ -82,7 +75,6 @@ Disciplina
 Guerreiro
 Prática
 Determinante
-Elo
 Despertar
 Força Vital
 Matriz
@@ -127,7 +119,6 @@ Reino Demoníaco
 Reino Imortal
 Reino Infernal
 Reino de Ascensão
-Reino de Transcendência
 Reino do Vazio
 Reino da Verdade
 Reino do Caos
@@ -180,7 +171,6 @@ Vale Escondido
 Terra Proibida
 Palácio Celestial
 Templo Antigo
-Floresta dos Espíritos
 Abismo Demoníaco
 Ruínas Antigas
 Pico Solitário
@@ -195,7 +185,6 @@ Muralha Espiritual
 Praça do Clã
 Sede do Clã
 Biblioteca Antiga
-Refúgio dos Imortais
 Vila Abandonada
 Portão Celestial
 Mestre Ancião
@@ -240,11 +229,6 @@ Dragão Adormecido
 Sábio
 Eremita
 Líder do Clã
-Monge
-Espadachim
-Ladrão
-Tirano
-Rei
 Imperador
 Rainha
 Princesa
@@ -252,7 +236,6 @@ General
 Guarda Imperial
 Cultivador Errante
 Guardião dos Céus
-Destino
 Causa e Efeito
 Lei Celestial
 Provação
