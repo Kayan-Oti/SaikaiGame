@@ -19,14 +19,14 @@ public class TutorialManager_Revisor : MonoBehaviour
 
     private void OnEnable() {
         EventManager.LevelManager.OnTutorialStart.Get().AddListener(StartTutorial);
-        _fakeFallingWordCorrect.OnDestroyTrigger += EndTypeTutorial;
-        _fakeFallingWordIncorrect.OnDestroyTrigger += EndTypeTutorial;
+        _fakeFallingWordCorrect.OnDestroyTrigger += EndRevisorTutorial;
+        _fakeFallingWordIncorrect.OnDestroyTrigger += EndRevisorTutorial;
     }
 
     private void OnDisable() {
         EventManager.LevelManager.OnTutorialStart.Get().RemoveListener(StartTutorial);
-        _fakeFallingWordCorrect.OnDestroyTrigger -= EndTypeTutorial;
-        _fakeFallingWordIncorrect.OnDestroyTrigger -= EndTypeTutorial;
+        _fakeFallingWordCorrect.OnDestroyTrigger -= EndRevisorTutorial;
+        _fakeFallingWordIncorrect.OnDestroyTrigger -= EndRevisorTutorial;
     }
 
     private void Start(){
@@ -82,7 +82,7 @@ public class TutorialManager_Revisor : MonoBehaviour
 
     #region Tutorial
 
-    private void EndTypeTutorial(){
+    private void EndRevisorTutorial(){
 
         _hitWords++;
         if(_hitWords != 2)

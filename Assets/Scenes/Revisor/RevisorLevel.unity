@@ -15006,8 +15006,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 771188112128416068, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_text
-      value: "Pressione e arraste o bot\xE3o esquerdo do mouse para revisar palavras
-        <b><color=green>corretas</color></b>."
+      value: "Pressione e arraste o bot\xE3o esquerdo do mouse nas palavras escritas
+        <b><color=green>corretamente</color></b>."
       objectReference: {fileID: 0}
     - target: {fileID: 771188112128416068, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_fontSize
@@ -15589,7 +15589,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -21583,8 +21583,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 771188112128416068, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_text
-      value: "Pressione e arraste o bot\xE3o direito do mouse para revisar palavras
-        <b><color=red>incorretas</color></b>."
+      value: "Pressione e arraste o bot\xE3o direito do mouse nas palavras escritas
+        <b><color=red>incorretamente</color></b>."
       objectReference: {fileID: 0}
     - target: {fileID: 771188112128416068, guid: bd46272963583fa409c0ebb4e2942c18, type: 3}
       propertyPath: m_fontSize
@@ -22013,7 +22013,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

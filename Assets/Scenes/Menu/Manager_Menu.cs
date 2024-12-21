@@ -1,17 +1,18 @@
+using MyBox;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Manager_Menu : MonoBehaviour
 {
+    [Header("Manager")]
+    [SerializeField] private UI_ManagerAnimation _managerAnimation;
+
     [Header("Main")]
     [SerializeField] private GameObject _mainContainer;
     [SerializeField] private GameObject _playButton;
     [SerializeField] private GameObject _settingsButton;
     [SerializeField] private GameObject _creditsButton;
 
-    [Header("Level Selector")]
-    [SerializeField] private GameObject _levelContainer;
-    [SerializeField] private GameObject _levelButtonFirst;
     [Header("Settings")]
     [SerializeField] private GameObject _settingsContainer;
     [SerializeField] private GameObject _settingsFirstButton;
@@ -22,20 +23,19 @@ public class Manager_Menu : MonoBehaviour
     [Header("Ranking")]
     [SerializeField] private LeaderboardManager _leaderboardManager;
 
+    private const float DELAY_TO_START = 1.5f;
+
     private void OnEnable() {
         EventManager.GameManager.OnLoadedScene.Get().AddListener(OnLoadScene);
+        EventManager.LevelManager.OnTutorialEnd.Get().AddListener(OnEndDialogue);
     }
 
     private void OnDisable() {
         EventManager.GameManager.OnLoadedScene.Get().RemoveListener(OnLoadScene);
+        EventManager.LevelManager.OnTutorialEnd.Get().RemoveListener(OnEndDialogue);
     }
 
     private void Start(){
-        Invoke(nameof(WaitStart),0.1f);
-    }
-    private void WaitStart(){
-        EventSystem.current.SetSelectedGameObject(_playButton);
-        _levelContainer.SetActive(false);
         _settingsContainer.SetActive(false);
         _creditsContainer.SetActive(false);
     }
@@ -44,6 +44,25 @@ public class Manager_Menu : MonoBehaviour
     private void OnLoadScene() {
         //Play Song Menu
         AudioManager.Instance.InitializeMusic(FMODEvents.Instance.MusicMenu, MusicIntensity.Intensity3);
+
+        if(GameManager.Instance.ActiveInitialDialogue)
+            Invoke(nameof(StartDialogue), DELAY_TO_START);
+        else
+            _managerAnimation.PlayAnimation("StartMain");
+    }
+
+    #endregion
+
+    #region Dialogue
+
+    [ButtonMethod]
+    private void StartDialogue(){
+        EventManager.LevelManager.OnTutorialStart.Get().Invoke();
+    }
+
+    private void OnEndDialogue(){
+        GameManager.Instance.ActiveInitialDialogue = false;
+        _managerAnimation.PlayAnimation("StartMain");
     }
 
     #endregion
@@ -53,22 +72,13 @@ public class Manager_Menu : MonoBehaviour
     public void Onclick_Open(GameObject menuContainer, GameObject firstButton){
         _mainContainer.SetActive(false);
         menuContainer.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(firstButton);
+        // EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
     public void Onclick_Close(GameObject menuContainer, GameObject menuButton){
         _mainContainer.SetActive(true);
         menuContainer.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(menuButton);
-    }
-
-    //--Menu Play
-    public void OnClick_Play(){
-        Onclick_Open(_levelContainer, _levelButtonFirst);
-    }
-
-    public void OnClick_PlayClose(){
-        Onclick_Close(_levelContainer, _playButton);
+        // EventSystem.current.SetSelectedGameObject(menuButton);
     }
 
     public void OnClick_LevelTradutor(){

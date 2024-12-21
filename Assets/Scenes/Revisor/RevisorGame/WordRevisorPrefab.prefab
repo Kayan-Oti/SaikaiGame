@@ -10175,8 +10175,8 @@ MonoBehaviour:
   _isCorrect: 0
   _textMesh: {fileID: 553762290271139059}
   _collider: {fileID: 3259824618038614957}
-  baseSpeed: 1
-  padding: {x: 0.4, y: 0.4}
+  _baseSpeed: 1
+  Padding: {x: 0.5, y: 0.5}
   _spriteRenderer: {fileID: 5134320649527067010}
   _particlesOnHit: {fileID: 8648104700438616622}
   _particlesOnMiss: {fileID: 7498538070738775469}
