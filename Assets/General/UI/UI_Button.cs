@@ -15,14 +15,11 @@ public class UI_Button : UI_Abstract_Selectable, IPointerEnterHandler, IPointerE
     protected override void OnSelectDo(BaseEventData eventData)
     {
         OnSelectEvent();
-        Vector3 scale  = new Vector3(_scaleEffect, _scaleEffect, 1);
-        transform.DOScale(scale, _duration);
     }
 
    protected override void OnDeselectDo(BaseEventData eventData)
     {
         OnDeselectEvent();
-        transform.DOScale(Vector3.one, _duration);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -44,15 +41,19 @@ public class UI_Button : UI_Abstract_Selectable, IPointerEnterHandler, IPointerE
     protected virtual void OnClickEvent(){
         _onclick.Invoke();
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ButtonClick, transform.position);
+        OnDeselectEvent();
     }
 
     protected virtual void OnSelectEvent(){
         _onSelect.Invoke();
+        Vector3 scale  = new Vector3(_scaleEffect, _scaleEffect, 1);
+        transform.DOScale(scale, _duration);
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ButtonHover, transform.position);
     }
 
     protected virtual void OnDeselectEvent(){
         _onDeselect.Invoke();
+        transform.DOScale(Vector3.one, _duration);
     }
 
 
